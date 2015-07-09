@@ -31,3 +31,6 @@
 [submodule "modules/directory-history/external"]
 	path = modules/directory-history/external
 	url = https://github.com/tymm/zsh-directory-history
+[submodule "modules/dropbox/external"]
+	path = modules/dropbox/external
+	url = https://github.com/andreafabrizi/Dropbox-Uploader
