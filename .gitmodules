@@ -16,6 +16,7 @@
 [submodule "modules/prompt/functions/pure"]
 	path = modules/prompt/external/pure
 	url = https://github.com/sindresorhus/pure.git
+<<<<<<< HEAD
 [submodule "modules/alias-tips/external"]
 	path = modules/alias-tips/external
 	url = https://github.com/djui/alias-tips
@@ -28,3 +29,6 @@
 [submodule "modules/composure/external"]
 	path = modules/composure/external
 	url = https://github.com/erichs/composure
+[submodule "modules/directory-history/external"]
+	path = modules/directory-history/external
+	url = https://github.com/tymm/zsh-directory-history
