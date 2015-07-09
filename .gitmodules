@@ -25,3 +25,6 @@
 [submodule "modules/blackbox/external"]
 	path = modules/blackbox/external
 	url = https://github.com/StackExchange/blackbox
+[submodule "modules/composure/external"]
+	path = modules/composure/external
+	url = https://github.com/erichs/composure
