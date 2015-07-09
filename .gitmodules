@@ -40,3 +40,6 @@
 [submodule "modules/zgen/external"]
 	path = modules/zgen/external
 	url = https://github.com/tarjoilija/zgen/
+[submodule "modules/powerline/external"]
+	path = modules/powerline/external
+	url = https://github.com/powerline/powerline
