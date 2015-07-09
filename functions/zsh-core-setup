@@ -1,0 +1,15 @@
+#!/bin/zsh
+
+##
+#  @file
+#      zsh-core-setup
+#  @brief
+#      Common functions
+#
+#  @author
+#      N4M3Z <https://github.com/N4M3Z>
+
+function zsh-core-setup()
+{
+    source ~/.zshrc
+}
