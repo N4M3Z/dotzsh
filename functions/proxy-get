@@ -1,0 +1,21 @@
+#!/bin/zsh
+
+##
+#  @file
+#
+#  @brief
+#      Common network functions
+#
+#  @author
+#      N4M3Z <https://github.com/N4M3Z>
+
+## Network operations
+function get.proxy()
+{
+    if grep $1 /etc/resolv.conf; then
+        #direct connection
+        exec nc $2 $3
+    else
+        exec ssh -T -a $4 nc $2 $3
+    fi
+}

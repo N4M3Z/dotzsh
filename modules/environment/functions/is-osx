@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+##
+#  @file
+#       is-osx
+#
+#  @brief
+#      General functions
+#
+#  @author
+#      Martin Zeman <https://github.com/N4M3Z>
+
+function is-osx ()
+{
+    [[ $('uname') == 'Darwin' ]]
+}

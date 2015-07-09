@@ -1,0 +1,19 @@
+#!/bin/zsh
+
+##
+#  @file
+#
+#  @brief
+#      Common functions
+#
+#  @author
+#      N4M3Z <https://github.com/N4M3Z>
+
+function change.suffix()
+{
+    OLD=$1
+    NEW=$2
+    for f in *.$OLD
+        do mv "$f" "`basename "$f" .$OLD`.$NEW"
+    done
+}

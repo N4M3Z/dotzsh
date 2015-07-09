@@ -1,13 +1,33 @@
+#!/bin/zsh
+
+##
+#  @file
 #
-# Executes commands at the start of an interactive session.
+#  @brief Executes commands at the start of an interactive session.
 #
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#  @author
+#      Sorin Ionescu <sorin.ionescu@gmail.com>
+#      Martin Zeman <https://github.com/N4M3Z>
 #
 
-# Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+# Measure elapsed time
+typeset -F SECONDS
+
+# Debug
+# set -x
+
+# Source Prezto framework.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]
+then
+    source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
+# Private tokens
+# export SSH_KEY_PATH="~/.ssh/dsa_id"
+if [[ -s "${ZDOTDIR:-$HOME}/.private" ]]
+then
+    source "${ZDOTDIR:-$HOME}/.private"
+fi
+
+# Print elapsed time
+echo "${SECONDS}s elapsed"

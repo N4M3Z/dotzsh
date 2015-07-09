@@ -24,6 +24,21 @@ Aliases
   - `d` prints the contents of the directory stack.
   - `1 ... 9` changes the directory to the **n** previous one.
 
+  - `lh` list human readable, colorized, show type, multi-column (default)
+  - `ll` list human readable, colorized, show type, long list
+  - `la` list human readable, colorized, show type, long list, show almost all (ignores .,.. etc.)
+  - `lr` list human readable, colorized, show type, sorted by date, recursive
+  - `lt` list human readable, colorized, show type, sorted by date, long list
+  - `lS` list one entry per line, colorized, show type, sorted by size, show blocksize occupied
+
+  - `ldot` list human readable, colorized, show type, long list, directories listed as plain files, only entries starting with a "." are shown
+  - `lart`
+  - `lrt`
+  - `dir`
+
+  - `take` creates a directory and then changes to it.
+  - `rm`, `cp`, `mv` modified for safety, override using `--force`
+
 Authors
 -------
 
@@ -31,5 +46,6 @@ Authors
 
   - [James Cox](https://github.com/imajes)
   - [Sorin Ionescu](https://github.com/sorin-ionescu)
+  - [Martin Zeman](https://github.com/N4M3Z)
 
 [1]: https://github.com/sorin-ionescu/prezto/issues

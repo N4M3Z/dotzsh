@@ -1,3 +1,6 @@
 *.zwc
 *.zwc.old
 modules/*/cache.zsh
+private/directory_history
+private/private
+private/zhistory

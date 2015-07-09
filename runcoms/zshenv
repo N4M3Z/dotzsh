@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 #
 # Defines environment variables.
 #
@@ -9,3 +11,7 @@
 if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
+
+export PROJECT_HOME="$HOME/Developer"
+# Ensure that all new environments are isolated from the system site-packages directory.
+# export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'

@@ -1,9 +1,14 @@
+##
+#  @file
+#      completion/init.zsh
 #
-# Sets completion options.
+#  @brief
+#      Z-Shell Completion Settings
 #
-# Authors:
-#   Robby Russell <robby@planetargon.com>
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#  @author
+#      Robby Russell <robby@planetargon.com>
+#      Sorin Ionescu <sorin.ionescu@gmail.com>
+#      Martin Zeman <https://github.com/N4M3Z>
 #
 
 # Return if requirements are not found.
@@ -16,6 +21,9 @@ fpath=("${0:h}/external/src" $fpath)
 
 # Load and initialize the completion system ignoring insecure directories.
 autoload -Uz compinit && compinit -i
+
+# Load completion modules
+zmodload -i zsh/complist
 
 #
 # Options
@@ -146,3 +154,9 @@ zstyle ':completion:*:ssh:*' group-order users hosts-domain hosts-host users hos
 zstyle ':completion:*:(ssh|scp|rsync):*:hosts-host' ignored-patterns '*(.|:)*' loopback ip6-loopback localhost ip6-localhost broadcasthost
 zstyle ':completion:*:(ssh|scp|rsync):*:hosts-domain' ignored-patterns '<->.<->.<->.<->' '^[-[:alnum:]]##(.[-[:alnum:]]##)##' '*@*'
 zstyle ':completion:*:(ssh|scp|rsync):*:hosts-ipaddr' ignored-patterns '^(<->.<->.<->.<->|(|::)([[:xdigit:].]##:(#c,2))##(|%*))' '127.0.0.<->' '255.255.255.255' '::1' 'fe80::*'
+
+# CMake
+# By default only C and C++ languages are supported for compiler flag variables. To define your own list of languages:
+cmake_langs=('C'   'C'
+             'CXX' 'C++')
+zstyle ':completion:*:cmake:*' languages $cmake_langs

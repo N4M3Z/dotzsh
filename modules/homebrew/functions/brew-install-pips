@@ -1,0 +1,19 @@
+##
+#  @file
+#     homebrew/functions/brew-install-pips
+#
+#  @brief
+#     Homebrew pips
+#
+#  @author
+#     Sorin Ionescu <sorin.ionescu@gmail.com>
+#     Martin Zeman <https://github.com/N4M3Z>
+#
+
+function brew.install.pips()
+{
+    brew pip argparse
+    brew pip mercurial
+    brew pip powerline-status
+    brew pip Pygments
+}

@@ -1,11 +1,21 @@
+#!/bin/zsh
+
+##
+#  @file
+#     runcoms/zpreztorc
 #
-# Sets Prezto options.
+#  @brief
+#     Sets Prezto options.
 #
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#  @author
+#     Sorin Ionescu <sorin.ionescu@gmail.com>
+#     Martin Zeman <martin.zeman@protonmail.ch>
+#
+#  @note
+#     Requires functioning installation of ROOT
 #
 
-#
+##
 # General
 #
 
@@ -23,16 +33,67 @@ zstyle ':prezto:*:*' color 'yes'
 
 # Set the Prezto modules to load (browse modules).
 # The order matters.
-zstyle ':prezto:load' pmodule \
-  'environment' \
-  'terminal' \
-  'editor' \
-  'history' \
-  'directory' \
-  'spectrum' \
-  'utility' \
-  'completion' \
-  'prompt'
+
+# Create a modules variable
+zplugins=(
+            ## Default plugins
+            "environment" # Sets general shell options and defines environment variables. This module must be loaded first.
+            "profiles"
+            "terminal"
+            "editor"
+            "history"
+            "directory"
+            "spectrum"
+            "utility"     # Defines general aliases and functions.
+            "completion"
+            "prompt"
+            ## Add plugins here
+            "archive"
+            "syntax-highlighting"
+            "url-highlighting"
+            # "directory-history"
+            "history-substring-search"
+            # "autosuggestions"
+            "composure"
+            "alias-tips"
+            "wordchar"
+            "dircycle"
+            "fasd"
+            "git"
+            "powerline"
+            "python"
+            "pip"
+            "node"
+            "ruby"
+            "root"
+            "node"
+            "ruby"
+            "tmux"
+            "zgen"
+            "blackbox"
+            "pygmentize"
+         )
+
+zstyle ':prezto:load' pmodule $zplugins
+
+#
+# Environment
+#
+
+# You may need to manually set your language environment
+export LANG="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+export LC_NUMERIC="en_US.UTF-8"
+export LC_TIME="en_US.UTF-8"
+export LC_COLLATE="en_US.UTF-8"
+export LC_MONETARY="en_US.UTF-8"
+export LC_MESSAGES="en_US.UTF-8"
+export LC_PAPER="en_US.UTF-8"
+export LC_NAME="en_US.UTF-8"
+export LC_ADDRESS="en_US.UTF-8"
+export LC_TELEPHONE="en_US.UTF-8"
+export LC_MEASUREMENT="en_US.UTF-8"
+export LC_IDENTIFICATION="en_US.UTF-8"
 
 #
 # Editor
@@ -42,14 +103,19 @@ zstyle ':prezto:load' pmodule \
 zstyle ':prezto:module:editor' key-bindings 'emacs'
 
 # Auto convert .... to ../..
-# zstyle ':prezto:module:editor' dot-expansion 'yes'
+zstyle ':prezto:module:editor' dot-expansion 'yes'
 
 #
 # Git
 #
 
 # Ignore submodules when they are 'dirty', 'untracked', 'all', or 'none'.
+# Retrieving the status of a repository with submodules can take a long time.
 # zstyle ':prezto:module:git:status:ignore' submodules 'all'
+
+# The format of the [git-log][8] output is configurable via the following style,
+# where context is "brief", "oneline", and "medium", which will be passed to the `--pretty=format:` switch.
+# zstyle ':prezto:module:git:log:context' format 'medium'
 
 #
 # GNU Utility
@@ -63,13 +129,13 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 #
 
 # Set the query found color.
-# zstyle ':prezto:module:history-substring-search:color' found ''
+zstyle ':prezto:module:history-substring-search:color' found 'fg=green,bold,underline'
 
 # Set the query not found color.
-# zstyle ':prezto:module:history-substring-search:color' not-found ''
+zstyle ':prezto:module:history-substring-search:color' not-found 'fg=red,bold,underline'
 
 # Set the search globbing flags.
-# zstyle ':prezto:module:history-substring-search' globbing-flags ''
+zstyle ':prezto:module:history-substring-search' globbing-flags 'i'
 
 #
 # Pacman
@@ -85,7 +151,16 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
-zstyle ':prezto:module:prompt' theme 'sorin'
+zstyle ":prezto:module:prompt" theme "N4M3Z"
+# zstyle ":prezto:module:prompt" theme "powerline"
+# zstyle ":prezto:module:prompt" theme "prezto-powerline"
+
+# Set default alias tip text
+zstyle ":prezto:module:alias-tips" text "Alias tip: "
+
+# Python info
+# %v - virtualenv name.
+zstyle ':prezto:module:python:info:virtualenv' format 'virtualenv:%v'
 
 #
 # Ruby
@@ -117,25 +192,91 @@ zstyle ':prezto:module:prompt' theme 'sorin'
 
 # Set syntax highlighters.
 # By default, only the main highlighter is enabled.
-# zstyle ':prezto:module:syntax-highlighting' highlighters \
-#   'main' \
-#   'brackets' \
-#   'pattern' \
-#   'cursor' \
-#   'root'
-#
-# Set syntax highlighting styles.
-# zstyle ':prezto:module:syntax-highlighting' styles \
-#   'builtin' 'bg=blue' \
-#   'command' 'bg=blue' \
-#   'function' 'bg=blue'
+zhighlighters=(
+                "main"
+                "brackets"
+                "pattern"
+                "cursor"
+                "root"
+                "line"
+                "url"
+              )
+
+zstyle ":prezto:module:syntax-highlighting" highlighters $zhighlighters
+
+## Set syntax highlighting styles.
+## This is the main highlighter, that highlights: Commands, Options, Arguments, Paths, Strings
+# Defaults
+zstyle ":prezto:module:syntax-highlighting" styles \
+    "default"                       "none" \
+    "unknown-token"                 "fg=red,bold" \
+    "reserved-word"                 "fg=yellow" \
+    "alias"                         "fg=green" \
+    "builtin"                       "fg=green" \
+    "function"                      "fg=green" \
+    "command"                       "fg=green" \
+    "precommand"                    "fg=green,underline" \
+    "commandseparator"              "none" \
+    "hashed-command"                "fg=green" \
+    "path"                          "underline" \
+    "path_prefix"                   "underline" \
+    "path_approx"                   "fg=yellow,underline" \
+    "globbing"                      "fg=blue" \
+    "history-expansion"             "fg=blue" \
+    "single-hyphen-option"          "none" \
+    "double-hyphen-option"          "none" \
+    "back-quoted-argument"          "none" \
+    "single-quoted-argument"        "fg=yellow" \
+    "double-quoted-argument"        "fg=yellow" \
+    "dollar-double-quoted-argument" "fg=cyan" \
+    "back-double-quoted-argument"   "fg=cyan" \
+    "assign"                        "none"
+
+# Create a styles variable
+zstyles=(
+            # To differentiate aliases from other command types
+            "alias" "fg=magenta,bold"
+
+            # To have paths colored instead of underlined
+            "path" "fg=cyan"
+
+            # To disable highlighting of globbing expressions
+            #"globbing" "none"
+
+            ## Brackets highlighter, that highlights brackets, parenthesis and matches them:
+            # To define styles for nested brackets up to level 4
+            "bracket-level-1" "fg=blue,bold"
+            "bracket-level-2" "fg=red,bold"
+            "bracket-level-3" "fg=yellow,bold"
+            "bracket-level-4" "fg=magenta,bold"
+
+            ## Cursor highlighter, that highlights the cursor:
+            "cursor" "bg=blue"
+
+            ## Root highlighter, that highlights the whole line if the current user is root:
+            "root" "bg=red"
+
+            ## Line highlighter, that highlights the whole line
+            "line" "bold"
+        )
+
+
+zstyle ':prezto:module:syntax-highlighting' styles $zstyles
+
+## Pattern highlighter, that highlights user defined patterns:
+zpatterns=(
+            "rm -rf *" "fg=white,bold,bg=red" \
+            "sudo *"   "fg=white,bold,bg=red" \
+          )
+
+zstyle ":prezto:module:syntax-highlighting" patterns $zpatterns
 
 #
 # Terminal
 #
 
 # Auto set the tab and window titles.
-# zstyle ':prezto:module:terminal' auto-title 'yes'
+zstyle ':prezto:module:terminal' auto-title 'yes'
 
 # Set the window title format.
 # zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
@@ -155,3 +296,6 @@ zstyle ':prezto:module:prompt' theme 'sorin'
 
 # Integrate with iTerm2.
 # zstyle ':prezto:module:tmux:iterm' integrate 'yes'
+
+# Load multiple ssh identities
+zstyle ':prezto:module:ssh:load' identities 'id_rsa' #'id_dsa' 'id_github'

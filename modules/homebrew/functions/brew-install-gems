@@ -1,0 +1,19 @@
+##
+#  @file
+#     homebrew/functions/brew-install-casks
+#
+#  @brief
+#     Homebrew casks
+#
+#  @author
+#     Sorin Ionescu <sorin.ionescu@gmail.com>
+#     Martin Zeman <https://github.com/N4M3Z>
+#
+
+function brew-install-gems()
+{
+    brew gem install terminal-notifier
+    brew gem install consular
+    brew gem install consular-osx
+    brew gem install consular-iterm
+}

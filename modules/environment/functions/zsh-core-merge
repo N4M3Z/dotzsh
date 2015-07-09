@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+##
+#  @file
+#
+#  @brief
+#      Common download functions
+#
+#  @author
+#      N4M3Z <https://github.com/N4M3Z>
+
+function zsh-core-merge()
+{
+    git merge upstream/master
+    git submodule update --init --recursive
+}

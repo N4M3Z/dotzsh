@@ -1,11 +1,12 @@
-#
+##
 # Initializes Prezto.
 #
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   Martin Zeman <https://github.com/N4M3Z>
 #
 
-#
+##
 # Version Check
 #
 
@@ -17,15 +18,50 @@ if ! autoload -Uz is-at-least || ! is-at-least "$min_zsh_version"; then
 fi
 unset min_zsh_version
 
+##
+# File loader
+# @brief Sources files.
 #
-# Module Loader
-#
+function pfileload()
+{
+  file=$1
+  if [[ -s $file ]]
+  then
+    source $file
+  fi
+}
 
-# Loads Prezto modules.
-function pmodload {
+##
+# Function loader
+# @brief Loads Prezto functions.
+#
+function pfuncload()
+{
+  local pfunction
+  local pfunction_glob='^([_.]*|prompt_*_setup|README*)(-.N:t)'
+
+  # Extended globbing is needed for listing autoloadable function directories.
+  setopt LOCAL_OPTIONS EXTENDED_GLOB
+  # Load Prezto functions.
+  for pfunction in $1/$~pfunction_glob; do
+    autoload -Uz "$pfunction"
+  done
+}
+
+# Add functions to $fpath.
+fpath=(${pmodules:+${ZDOTDIR:-$HOME}/.zprezto/functions(/FN)} $fpath)
+
+# Autoload functions.
+pfuncload ${ZDOTDIR:-$HOME}/.zprezto/functions/
+
+##
+# Module Loader
+# @brief Loads Prezto modules.
+#
+function pmodload()
+{
   local -a pmodules
   local pmodule
-  local pfunction_glob='^([_.]*|prompt_*_setup|README*)(-.N:t)'
 
   # $argv is overridden in the anonymous function.
   pmodules=("$argv[@]")
@@ -33,17 +69,8 @@ function pmodload {
   # Add functions to $fpath.
   fpath=(${pmodules:+${ZDOTDIR:-$HOME}/.zprezto/modules/${^pmodules}/functions(/FN)} $fpath)
 
-  function {
-    local pfunction
-
-    # Extended globbing is needed for listing autoloadable function directories.
-    setopt LOCAL_OPTIONS EXTENDED_GLOB
-
-    # Load Prezto functions.
-    for pfunction in ${ZDOTDIR:-$HOME}/.zprezto/modules/${^pmodules}/functions/$~pfunction_glob; do
-      autoload -Uz "$pfunction"
-    done
-  }
+  # Autoload functions.
+  pfuncload ${ZDOTDIR:-$HOME}/.zprezto/modules/${^pmodules}/functions/
 
   # Load Prezto modules.
   for pmodule in "$pmodules[@]"; do
@@ -53,9 +80,17 @@ function pmodload {
       print "$0: no such module: $pmodule" >&2
       continue
     else
-      if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/modules/$pmodule/init.zsh" ]]; then
-        source "${ZDOTDIR:-$HOME}/.zprezto/modules/$pmodule/init.zsh"
-      fi
+      # Load module initialization script
+      pfileload "${ZDOTDIR:-$HOME}/.zprezto/modules/$pmodule/init.zsh"
+
+      # Load module functions
+      pfileload "${ZDOTDIR:-$HOME}/.zprezto/modules/$pmodule/functions.zsh"
+
+      # Load module aliases
+      pfileload "${ZDOTDIR:-$HOME}/.zprezto/modules/$pmodule/aliases.zsh"
+
+      # Load module key bindings
+      pfileload "${ZDOTDIR:-$HOME}/.zprezto/modules/$pmodule/bindings.zsh"
 
       if (( $? == 0 )); then
         zstyle ":prezto:module:$pmodule" loaded 'yes'

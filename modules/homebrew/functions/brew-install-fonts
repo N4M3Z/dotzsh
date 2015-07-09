@@ -1,0 +1,16 @@
+##
+#  @file
+#     homebrew/functions/brew-install-fonts
+#
+#  @brief
+#     Homebrew cask fonts
+#
+#  @author
+#     Sorin Ionescu <sorin.ionescu@gmail.com>
+#     Martin Zeman <https://github.com/N4M3Z>
+#
+
+function brew.install.fonts()
+{
+    brew tap caskroom/fonts
+}

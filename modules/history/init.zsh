@@ -1,23 +1,31 @@
-#
-# Sets history options and defines history aliases.
-#
-# Authors:
-#   Robby Russell <robby@planetargon.com>
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
+#!/bin/zsh
 
+##
+# @file
+#      history.module.zsh
 #
+# @brief
+#      Sets history options and defines history aliases.
+#
+# @authors
+#      Robby Russell <robby@planetargon.com>
+#      Sorin Ionescu <sorin.ionescu@gmail.com>
+#      Martin Zeman  <https://github.com/N4M3Z>
+
+##
 # Variables
 #
-
 HISTFILE="${ZDOTDIR:-$HOME}/.zhistory"       # The path to the history file.
-HISTSIZE=10000                   # The maximum number of events to save in the internal history.
-SAVEHIST=10000                   # The maximum number of events to save in the history file.
+HISTSIZE=100000 # The maximum number of events to save in the internal history.
+SAVEHIST=100000 # The maximum number of events to save in the history file.
 
-#
+if [ -z ${HIST_STAMPS} ]; then
+    HIST_STAMPS="yyyy-mm-dd"
+fi
+
+##
 # Options
 #
-
 setopt BANG_HIST                 # Treat the '!' character specially during expansion.
 setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
 setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
@@ -29,11 +37,5 @@ setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
 setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
 setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
 setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
-setopt HIST_BEEP                 # Beep when accessing non-existent history.
 
-#
-# Aliases
-#
-
-# Lists the ten most used commands.
-alias history-stat="history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
+unsetopt HIST_BEEP                 # Beep when accessing non-existent history.

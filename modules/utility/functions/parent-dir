@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+function parent-dir()
+{
+    cd ..
+    zle accept-line
+}

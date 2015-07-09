@@ -1,0 +1,19 @@
+##
+#  @file
+#     homebrew/functions/brew-cleanup
+#
+#  @brief
+#     Homebew complete clean up.
+#
+#  @author
+#     Sorin Ionescu <sorin.ionescu@gmail.com>
+#     Martin Zeman <https://github.com/N4M3Z>
+#
+
+function brew-cleanup()
+{
+    brew cleanup
+    brew cask cleanup
+    brew gem cleanup
+    brew pip cleanup
+}

@@ -1,0 +1,98 @@
+##
+#  @file
+#     homebrew/functions/brew-cleanup
+#
+#  @brief
+#     A common set of brews
+#
+#  @author
+#     Sorin Ionescu <sorin.ionescu@gmail.com>
+#     Martin Zeman <https://github.com/N4M3Z>
+#
+
+function brew.install.brews()
+{
+    brew install astyle
+    brew install autoconf
+    brew install autojump
+    brew install automake
+    brew install boost --c++11 --with-icu4c --with-mpi
+    brew install boost149
+    brew install brew-cask
+    brew install brew-gem
+    brew install brew-pip
+    brew install bwana
+    brew install chktex
+    brew install clang-format
+    brew install cmake
+    brew install coreutils
+    brew install cornerstone
+    brew install curl
+    brew install dot
+    brew install doxygen
+    brew install fftw
+    brew install find
+    brew install gdb
+    brew install gem
+    brew install gem-completion
+    brew install gfortran
+    brew install git
+    brew install git-annex
+    brew install git-flow
+    brew install google-drive
+    brew install gpdfx
+    brew install graphviz
+    brew install htop
+    brew install imagemagick
+    brew install inkscape
+    brew install kcachegrind
+    brew install ksdiff
+    brew install latexmk
+    brew install libksba
+    brew install lldb
+    brew install lua
+    brew install luarocks
+    brew install midnight-commander
+    brew install parallel
+    brew install pcre
+    brew install pdf2svg
+    brew install pip
+    brew install pip-completion
+    brew install powerline
+    brew install pyenv
+    brew install pygmentize
+    brew install pyqt
+    brew install pyqt5
+    brew install python
+    brew install python3
+    brew install qcachegrind
+    brew install qmake
+    brew install qt
+    brew install qt5
+    brew install R
+    brew install r
+    brew install root
+    brew install root6
+    brew install rscript
+    brew install ruby
+    brew install rvm
+    brew install sbt
+    brew install shellcheck
+    brew install sqlite
+    brew install subversion
+    brew install subversion16
+    brew install subversion17
+    brew install svg2pdf
+    brew install tor
+    brew install uncrustify
+    brew install valgrind
+    brew install waf
+    brew install wget
+    brew install wireshark --with-lua --with-qt5
+    brew install xclock
+    brew install xcode
+    brew install zip
+    brew install zsh
+    brew install zsh-completions
+    brew install zsh-syntax-highlighting
+}

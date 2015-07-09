@@ -1,0 +1,113 @@
+##
+#  @file
+#     homebrew/functions/brew-install-casks
+#
+#  @brief
+#     Homebrew casks
+#
+#  @author
+#     Sorin Ionescu <sorin.ionescu@gmail.com>
+#     Martin Zeman <https://github.com/N4M3Z>
+#
+
+function brew-install-casks()
+{
+    # brew cask install airmail
+    # brew cask install android-file-transfer
+    # brew cask install appcleaner
+    brew cask install latexian
+    # brew cask install onepassword
+    # brew cask install spectacle
+    # brew cask install superduper
+    # brew cask install totalfinder
+    # brew cask install transmission
+    # brew cask install valentina-studio
+
+    brew cask install adobe-reader # view PDF documents
+    brew cask install airserver # stream audio, video and photos via AirPlay
+    brew cask install alfred # quick launcher for apps and more
+    # brew cask install asepsis # prevents the storage of .DS_store files
+    brew cask install aurora # iTunes alarm clock; wakes your Mac and plays music
+    brew cask install bartender # Organize your menu bar apps
+    brew cask install battle-net
+    brew cask install bookends # reference manager
+    brew cask install caffeine # prevents mac from sleep
+    brew cask install calcservice # calculates math formulas in any text editor
+    brew cask install calibre # complete e-library management system
+    brew cask install camtasia # powerful screen recording and production tool
+    brew cask install cheatsheet # shortcut assistant
+    brew cask install cleanmymac # system cache cleaner and uninstaller
+    brew cask install cocktail # general maintenance and optimization utility
+    brew cask install codekit # build websites faster and better
+    brew cask install cornerstone # feature-rich Subversion client
+    brew cask install deltawalker # compare, edit and merge files, and synchronize folders
+    brew cask install devonthink-pro-office # complex data management
+    brew cask install diskaid # complete iOS device manager (was DiskAid)
+    brew cask install docear # suite for the discovery and management of academic literature (beta)
+    brew cask install dosbox # DOS emulator
+    # brew cask install doubletwist # bidirectional sync between iTunes and Android
+    brew cask install dropbox # cloud storage
+    brew cask install easyfind # file, folder, and text contents search tool.
+    brew cask install etrecheck # for troubleshooting your Mac; displays important system details.
+    brew cask install evernote # create searchable notes and access them anywhere
+    brew cask install flip4mac # WMV player system extension
+    brew cask install fluid
+    brew cask install flux
+    brew cask install gfxcardstatus
+    brew cask install github
+    brew cask install gog-downloader
+    brew cask install google-chrome
+    brew cask install google-drive
+    brew cask install google-hangouts
+    brew cask install google-earth
+    brew cask install hammerspoon
+    brew cask install handbrake
+    brew cask install ibackup # preferences backup tool
+    brew cask install idocument-plus
+    brew cask install inkscape
+    brew cask install iterm2
+    brew cask install jdownloader
+    brew cask install kindle
+    brew cask install ksdiff
+    brew cask install latexit # latex graphical editor
+    brew cask install lastfm
+    brew cask install lastpass
+    brew cask install libreoffice # free Office alternative
+    brew cask install mail-plugin-manager
+    brew cask install mendeley-desktop # reference manager
+    brew cask install mention
+    brew cask install mjolnir
+    brew cask install music-manager # Google's music manager
+    brew cask install onyx
+    brew cask install openoffice # free Office alternative
+    brew cask install origin # digital games store
+    brew cask install path-finder # complex file manager
+    brew cask install pdfpenpro
+    # brew cask install pdftk # pdf toolkit
+    brew cask install postbox
+    brew cask install prizmo
+    brew cask install qt-creator # excellent IDE for C++
+    brew cask install rescuetime
+    brew cask install scrivener
+    brew cask install skim # customizable pdf previewer
+    brew cask install skitch # markup interfaced to Evernote
+    brew cask install skype # voice chat
+    brew cask install smcfancontrol # fan control
+    brew cask install sourcetree # git/mercurial client
+    brew cask install spotify # music streaming service
+    brew cask install steam # digital game store
+    # brew  cask install sublime-text
+    brew cask install sublime-text3 # famous text editor
+    brew cask install textexpander
+    brew cask install viscosity # VPN+openVPN tool
+    brew cask install vlc # famous media player
+    brew cask install wordservice
+
+    brew cask install gpgtools
+    brew cask install crashplan
+    brew cask install adobe-creative-cloud
+
+    brew cask install xquartz                                                                                                                                                                                               21:43:34  2015-02-23
+    brew cask install parallels-desktop
+    brew cask install imazing
+}

@@ -1,0 +1,75 @@
+#!/bin/zsh
+
+##
+#  @file
+#       .zgen
+#  @brief
+#       zgen initialization.
+#
+#  @author
+#       Martin Zeman <https://github.com/N4M3Z>
+#
+#  @note
+#       Uses tarjoilija/zgen plugin manager which is a simplified version of zsh-users/antigen
+#
+
+##
+# Frameworks
+#
+# zgen load N4M3Z/zsh-core
+
+zgen clone zsh-users/antigen
+# zgen clone robbyrussell/oh-my-zsh
+# zgen clone sorin-ionescu/prezto
+
+##
+# Plugins
+#
+# zgen load oknowton/zsh-dwim # Seems quite limited
+# zgen load rutchkiwi/copyzshell # Plugin to copy .zshrc and .gitconfig files to a remote machine using ssh.
+# zgen load maxtsepkov/bash_colors
+# zgen load marzocchi/zsh-notify
+# zgen load hchbaw/auto-fu.zsh auto-fu.zsh # Not compatible with zsh-syntax-highlighting
+# zgen load supercrabtree/k # Seems broken and slow
+# zgen load bric3/nice-exit-code
+# zgen load walesmd/caniuse.plugin.zsh
+
+##
+# Gists
+#
+# zgen clone https://gist.github.com/04d72e89da2b6562a8cb
+
+##
+# Themes
+#
+# zgen load robbyrussell/oh-my-zsh themes/jonathan.zsh-theme
+# zgen load jeremyFreeAgent/oh-my-zsh-powerline-theme powerline.zsh-theme
+# zgen load milkbikis/powerline-shell
+# zgen load nimiq/promptastic
+# zgen load sindresorhus/pure
+
+##
+# Process into zsh-core
+#
+# zgen load zsh-users/zsh-syntax-highlighting # Fish shell like syntax highlighting for zsh
+# zgen load zsh-users/zsh-history-substring-search # ZSH port of Fish shell's history search feature, must be loaded after zsh-syntax-highlighting
+# zgen load tarruda/zsh-autosuggestions # Fish-like fast/unobtrusive autosuggestions for zsh, must be loaded after zsh-syntax-highlighting
+# zgen load zsh-users/zsh-completions src # Additional completion definitions for zsh
+# zgen load djui/alias-tips
+# zgen load StackExchange/blackbox # Encryption plugin
+# zgen load erichs/composure composure.sh # These light-hearted functions make programming the shell easier and more intuitive
+# zgen load voronkovich/gitignore.plugin.zsh # ZSH plugin for creating gitignore files
+# zgen clone andreafabrizi/Dropbox-Uploader # Alternative to Dropbox CLI
+# zgen load ascii-soup/zsh-url-highlighter url/url-highlighter.zsh
+# zgen load tymm/zsh-directory-history # A per directory history for zsh.
+# zgen load Tarrasch/zsh-colors
+# zgen load Tarrasch/zsh-autoenv
+# zgen clone chriskempson/base16-shell
+
+# if is-osx; then
+#     zgen clone chriskempson/base16-iterm2
+# elif is.linux; then
+
+# elif is.cygwin; then
+#     # zgen load robbyrussell/oh-my-zsh plugins/cygwin
+# fi
