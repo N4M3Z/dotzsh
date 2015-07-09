@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+# Load dependencies.
+pmodload 'powerline'
