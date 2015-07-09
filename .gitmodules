@@ -19,3 +19,9 @@
 [submodule "modules/alias-tips/external"]
 	path = modules/alias-tips/external
 	url = https://github.com/djui/alias-tips
+[submodule "modules/autosuggestions/external"]
+	path = modules/autosuggestions/external
+	url = https://github.com/tarruda/zsh-autosuggestions
+[submodule "modules/blackbox/external"]
+	path = modules/blackbox/external
+	url = https://github.com/StackExchange/blackbox
