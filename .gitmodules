@@ -37,3 +37,6 @@
 [submodule "modules/url-highlighting/external"]
 	path = modules/url-highlighting/external
 	url = https://github.com/ascii-soup/zsh-url-highlighter
+[submodule "modules/zgen/external"]
+	path = modules/zgen/external
+	url = https://github.com/tarjoilija/zgen/
