@@ -16,3 +16,6 @@
 [submodule "modules/prompt/functions/pure"]
 	path = modules/prompt/external/pure
 	url = https://github.com/sindresorhus/pure.git
+[submodule "modules/directory-history/external"]
+	path = modules/directory-history/external
+	url = https://github.com/tymm/zsh-directory-history
