@@ -46,3 +46,10 @@ if zstyle -t ':prezto:environment:termcap' color; then
   export LESS_TERMCAP_ue=$'\E[0m'          # Ends underline.
   export LESS_TERMCAP_us=$'\E[01;32m'      # Begins underline.
 fi
+
+zstyle -s ':prezto:environment' language 'LANGUAGE'
+if [[ ! -z $LANGUAGE ]]
+then
+    export LC_ALL="$LANGUAGE"
+    export LANG="$LANGUAGE"
+fi
