@@ -1,9 +1,10 @@
-#
+##
 # Maintains a frequently used file and directory list for fast access.
 #
 # Authors:
 #   Wei Dai <x@wei23.net>
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   Martin Zeman <martin.zeman@protonmail.ch>
 #
 
 # Load dependencies.
@@ -14,7 +15,7 @@ if (( ! $+commands[fasd] )); then
   return 1
 fi
 
-#
+##
 # Initialization
 #
 
@@ -44,10 +45,3 @@ function fasd_cd {
     print "$fasd_ret"
   fi
 }
-
-#
-# Aliases
-#
-
-# Changes the current working directory interactively.
-alias j='fasd_cd -i'
