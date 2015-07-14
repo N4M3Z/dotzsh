@@ -52,6 +52,19 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 # zstyle ':prezto:module:editor' dot-expansion 'yes'
 
 #
+# Completion
+#
+
+# Turn off beeping for ambiguous completions
+zstyle ':prezto:module:completion' no-list-beep 'yes'
+
+# Menu select
+zstyle ':prezto:module:completion' complist 'yes'
+
+# Completion waiting dots
+# zstyle ':prezto:module:completion' waiting-dots 'yes'
+
+#
 # Git
 #
 

@@ -4,6 +4,7 @@
 # Authors:
 #   Robby Russell <robby@planetargon.com>
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   Martin Zeman <martin.zeman@protonmail.ch>
 #
 
 # Return if requirements are not found.
@@ -13,6 +14,13 @@ fi
 
 # Add zsh-completions to $fpath.
 fpath=("${0:h}/external/src" $fpath)
+
+# Menu-select widget from zsh/complist module:
+# Make sure that that module is loaded before the call to compinit so that that widget is also re-defined.
+if zstyle -t ':prezto:module:completion' complist
+then
+  zmodload zsh/complist
+fi
 
 # Load and initialize the completion system ignoring insecure directories.
 autoload -Uz compinit && compinit -i
@@ -29,6 +37,12 @@ setopt AUTO_LIST           # Automatically list choices on ambiguous completion.
 setopt AUTO_PARAM_SLASH    # If completed parameter is a directory, add a trailing slash.
 unsetopt MENU_COMPLETE     # Do not autoselect the first completion entry.
 unsetopt FLOW_CONTROL      # Disable start/stop characters in shell editor.
+
+# Turn off beeping for ambiguous completions
+if zstyle -t ':prezto:module:completion' no-list-beep
+then
+  setopt NO_LIST_BEEP
+fi
 
 #
 # Styles
