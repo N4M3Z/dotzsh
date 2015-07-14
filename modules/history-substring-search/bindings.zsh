@@ -9,11 +9,9 @@
 #      Martin Zeman <martin.zeman@protonmail.ch>
 #
 
-##
-# zsh-users/zsh-history-substring-search
-#
-if (( ! $+commands[history-substring-search-up] )); then
-   return 1
+# Return if requirements are not found.
+if (( ! $+functions[history-substring-search-up] && ! $+functions[history-substring-search-down] )); then
+    return 1
 fi
 
 if [[ -n "$key_info" ]]
