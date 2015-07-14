@@ -7,7 +7,10 @@
 
 # For Linux we may use the CLI version of Dropbox, otherwise andreafabrizi/Dropbox-Uploader must be used
 
-if is-linux; then
+pmodload 'helper'
+
+if is-linux
+then
     # Use Dropbox CLI
     # Add plugin bin diretory to user's path
     PLUGIN_BIN="$(dirname $0)"
