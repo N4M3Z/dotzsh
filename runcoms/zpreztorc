@@ -42,6 +42,13 @@ zstyle ':prezto:load' pmodule \
 # zstyle ':prezto:module:autosuggestions:color' found ''
 
 #
+# Environment
+#
+
+# You may need to manually set your language environment
+# zstyle ':prezto:environment' language 'en_US.UTF-8'
+
+#
 # Editor
 #
 
