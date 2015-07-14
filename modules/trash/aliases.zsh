@@ -5,11 +5,11 @@
 #      trash/init.zsh
 #
 #  @brief
-#      Aliases for the *trash* plugin (see [link](https://github.com/sindresorhus/trash)sindresorhus/trash)
+#      Aliases for the *trash* plugin
+#      (https://github.com/sindresorhus/trash)
 #
 #  @authors
-#      sindresorhus <https://github.com/sindresorhus>
-#      N4M3Z <https://github.com/N4M3Z>
+#      Martin Zeman <martin.zeman@protonmai.ch>
 #
 alias t=trash
 
