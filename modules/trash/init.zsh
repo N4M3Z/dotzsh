@@ -26,7 +26,8 @@
 # Add TeX to path if not already included
 function install-trash()
 {
-    if is-defined "npm"; then
+    if (( ! $+commands[npm] ))
+    then
         npm install --global trash
         npm install --global empty-trash
     else
@@ -34,7 +35,7 @@ function install-trash()
     fi
 }
 
-if ! is-defined "trash"
+if (( ! $+commands[trash] ))
 then
     vared -p 'Trash is not installed, would you like to install it? (yes/no) ' -c install
     if [[ $install == "yes" ]]
