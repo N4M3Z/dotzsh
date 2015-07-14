@@ -4,13 +4,16 @@
 # Authors:
 #   Robby Russell <robby@planetargon.com>
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   Martin Zeman  <martin.zeman@protonmailch>
 #
 
 #
 # Variables
 #
 
-HISTFILE="${ZDOTDIR:-$HOME}/.zhistory"       # The path to the history file.
+# The path to the history file.
+HISTFILE="${ZDOTDIR:-$HOME}/.zhistory"
+
 HISTSIZE=10000                   # The maximum number of events to save in the internal history.
 SAVEHIST=10000                   # The maximum number of events to save in the history file.
 
@@ -30,10 +33,3 @@ setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
 setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
 setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing non-existent history.
-
-#
-# Aliases
-#
-
-# Lists the ten most used commands.
-alias history-stat="history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"

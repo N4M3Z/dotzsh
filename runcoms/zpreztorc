@@ -79,6 +79,11 @@ zstyle ':prezto:module:completion' complist 'yes'
 # zstyle ':prezto:module:gnu-utility' prefix 'g'
 
 #
+# History
+#
+zstyle ':prezto:module:history' format 'yyyy-mm-dd'
+
+#
 # History Substring Search
 #
 
