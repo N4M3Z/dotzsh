@@ -6,10 +6,10 @@
 #
 #  @brief
 #      *trash* plugin - a safer alternative to rm
+#      (https://github.com/sindresorhus/trash)
 #
 #  @authors
-#      sindresorhus <https://github.com/sindresorhus>
-#      N4M3Z <https://github.com/N4M3Z>
+#      Martin Zeman <martin.zeman@protonmai.ch>
 #
 # Trash is a cross-platform command-line app for moving files and directories to the trash. A safer alternative to rm.
 # https://github.com/sindresorhus/trash
