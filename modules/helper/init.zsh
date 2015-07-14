@@ -3,6 +3,7 @@
 #
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   Martin Zeman <martin.zeman@protonmail.ch>
 #
 
 # Checks if a file can be autoloaded by trying to load it in a subshell.
@@ -28,4 +29,28 @@ function coalesce {
     return 0
   done
   return 1
+}
+
+# Check whether a command is defined
+function is-defined ()
+{
+    type "$1" &> /dev/null;
+}
+
+# Check whether the enviroment is Cygwin
+function is-cygwin ()
+{
+    [[ $('uname') == 'Cygwin' ]]
+}
+
+# Check whether the enviroment is Linux
+function is-linux ()
+{
+    [[ $('uname') == 'Linux' ]]
+}
+
+# Check whether the enviroment is OS X
+function is-osx ()
+{
+    [[ $('uname') == 'Darwin' ]]
 }
