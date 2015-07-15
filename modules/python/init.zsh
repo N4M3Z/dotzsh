@@ -44,9 +44,3 @@ if (( $+commands[virtualenvwrapper.sh] )); then
 
   source "$commands[virtualenvwrapper.sh]"
 fi
-
-#
-# Aliases
-#
-
-alias py='python'
