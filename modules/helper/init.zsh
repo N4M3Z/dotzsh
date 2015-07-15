@@ -6,6 +6,21 @@
 #   Martin Zeman <martin.zeman@protonmail.ch>
 #
 
+# Update core and all submodules
+function zsh-update()
+{
+    cd "${ZDOTDIR:-$HOME}/.zpreztorc"
+    git pull
+    git submodule update --init --recursive
+}
+
+# Merge upstream updates
+function zsh-merge()
+{
+    git merge upstream/master
+    git submodule update --init --recursive
+}
+
 # Checks if a file can be autoloaded by trying to load it in a subshell.
 function is-autoloadable {
   ( unfunction $1 ; autoload -U +X $1 ) &> /dev/null
