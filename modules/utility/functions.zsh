@@ -46,3 +46,10 @@ function find-exec {
 function psu {
   ps -U "${1:-$LOGNAME}" -o 'pid,%cpu,%mem,command' "${(@)argv[2,-1]}"
 }
+
+# Go to parent dir
+function dirup()
+{
+    cd ..
+    zle accept-line
+}
