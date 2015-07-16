@@ -50,14 +50,20 @@ alias sftp='noglob sftp'
 alias _='sudo'
 alias sr='source'
 alias b='${(z)BROWSER}'
-alias cp="${aliases[cp]:-cp} -i"
 alias e='${(z)VISUAL:-${(z)EDITOR}}'
-alias ln="${aliases[ln]:-ln} -i"
-alias mkdir="${aliases[mkdir]:-mkdir} -p"
-alias mv="${aliases[mv]:-mv} -i"
 alias p='${(z)PAGER}'
-alias rm="${aliases[rm]:-rm} -i"
 alias type='type -a'
+
+# Safety first
+alias cp="${aliases[cp]:-cp} -i"
+alias ln="${aliases[ln]:-ln} -i"
+alias mv="${aliases[mv]:-mv} -i"
+alias rm="${aliases[rm]:-rm} -i"
+
+alias mkdir="${aliases[mkdir]:-mkdir} -p"
+alias rmdir="${aliases[rmdir]:-rmdir} -v"
+alias chmod="${aliases[chmod]:-chmod} -v"
+alias chown="${aliases[chown]:-chown} -v"
 
 # ls
 if is-callable 'dircolors'; then
