@@ -165,3 +165,61 @@ fi
 
 # Serves a directory via HTTP.
 alias http-serve='python -m SimpleHTTPServer'
+
+## Suffix aliases
+
+autoload -U is-at-least
+if is-at-least 4.2.0 ; then
+    # documents
+    if [[ "$OSTYPE" == darwin* ]]; then
+        # OS X can call global command "open" to open files in default application
+        _filetypes=(
+                       htm html de org net com at cx nl se dk dk php
+                       cpp cxx cc c hh h inl asc txt TXT tex
+                       jpg jpeg png gif mng tiff tif xpm
+                       ape avi flv mkv mov mp3 mpeg mpg ogg ogm rm wav webm
+                       pdf ps ppt pptx doc docx xls xlsx
+                   )
+        for filetype in $_filetypes ; do alias -s $filetype=open ; done
+    else
+        # open browser on urls
+        browser_fts=(
+                          htm html de org net com at cx nl se dk dk php
+                     )
+        for ft in $browser_fts ; do alias -s $ft=$BROWSER ; done
+
+        # text files
+        editor_fts=(
+                        cpp cxx cc c hh h inl asc txt TXT tex
+                    )
+        for ft in $editor_fts ; do alias -s $ft=$EDITOR ; done
+
+        # images
+        image_fts=(
+                        jpg jpeg png gif mng tiff tif xpm
+                    )
+        for ft in $image_fts ; do alias -s $ft=$XIVIEWER; done
+
+        # media files
+        media_fts=(
+                       ape avi flv mkv mov mp3 mpeg mpg ogg ogm rm wav webm
+                   )
+        for ft in $media_fts ; do alias -s $ft=$PLAYER ; done
+
+        # documents
+        alias -s pdf=acroread
+        alias -s ps=gv
+        alias -s dvi=xdvi
+        alias -s chm=xchm
+        alias -s djvu=djview
+
+    fi
+
+    # For archives list contents
+    alias -s zip="unzip -l"
+    alias -s rar="unrar l"
+    alias -s tar="tar tf"
+    alias -s tar.gz="echo "
+    alias -s ace="unace l"
+
+fi
