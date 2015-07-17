@@ -148,6 +148,8 @@ fi
 # Resource Usage
 alias df='df -kh'
 alias du='du -kh'
+alias dud='du -d 1 -h'
+alias duf='du -sh *'
 
 if (( $+commands[htop] )); then
   alias top=htop
