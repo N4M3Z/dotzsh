@@ -16,8 +16,8 @@ fi
 #
 
 if [[ -z "$STY" && -z "$EMACS" && -z "$VIM" ]] && ( \
-  ( [[ -n "$SSH_TTY" ]] && zstyle -t ':prezto:module:screen:auto-start' remote ) ||
-  ( [[ -z "$SSH_TTY" ]] && zstyle -t ':prezto:module:screen:auto-start' local ) \
+  ( [[ -n "$SSH_TTY" ]] && zstyle -t ':dotzsh:module:screen:auto-start' remote ) ||
+  ( [[ -z "$SSH_TTY" ]] && zstyle -t ':dotzsh:module:screen:auto-start' local ) \
 ); then
   session="$(
     screen -list 2> /dev/null \

@@ -13,7 +13,7 @@
 #
 
 # Load dependencies.
-pmodload 'helper'
+dotzsh-module-load 'helper'
 
 function prompt_smiley_precmd {
   unsetopt XTRACE KSH_ARRAYS
@@ -42,19 +42,19 @@ function prompt_smiley_setup {
   add-zsh-hook precmd prompt_smiley_precmd
 
   # Set editor-info parameters.
-  zstyle ':prezto:module:editor:info:completing' format '%B%F{red}...%f%b'
+  zstyle ':dotzsh:module:editor:info:completing' format '%B%F{red}...%f%b'
 
   # Set python-info parameters.
-  zstyle ':prezto:module:python:info:virtualenv' format '%F{yellow}[%v]%f '
+  zstyle ':dotzsh:module:python:info:virtualenv' format '%F{yellow}[%v]%f '
 
   # Set ruby-info parameters.
-  zstyle ':prezto:module:ruby:info:version' format '%F{yellow}[%v]%f '
+  zstyle ':dotzsh:module:ruby:info:version' format '%F{yellow}[%v]%f '
 
   # Set git-info parameters.
-  zstyle ':prezto:module:git:info' verbose 'yes'
-  zstyle ':prezto:module:git:info:branch' format '%F{blue}%b%f'
-  zstyle ':prezto:module:git:info:dirty' format '%%B%F{red} ±%f%%b'
-  zstyle ':prezto:module:git:info:keys' format 'prompt' '(%b%D)'
+  zstyle ':dotzsh:module:git:info' verbose 'yes'
+  zstyle ':dotzsh:module:git:info:branch' format '%F{blue}%b%f'
+  zstyle ':dotzsh:module:git:info:dirty' format '%%B%F{red} ±%f%%b'
+  zstyle ':dotzsh:module:git:info:keys' format 'prompt' '(%b%D)'
 
   # Define prompts.
   PROMPT='$python_info[virtualenv]$ruby_info[version]${git_info:+${(e)git_info[prompt]}} %B%c%b %(?:%F{green}ツ%f:%F{red}✖%f) '

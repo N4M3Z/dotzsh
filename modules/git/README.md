@@ -15,18 +15,14 @@ The format of the [git-log][8] output is configurable via the following style,
 where context is *brief*, *oneline*, and *medium*, which will be passed to the
 `--pretty=format:` switch.
 
-```sh
-zstyle ':prezto:module:git:log:context' format ''
-```
+    zstyle ':dotzsh:module:git:log:context' format ''
 
 ### Status
 
 Retrieving the status of a repository with submodules can take a long time.
 Submodules may be ignored when they are *dirty*, *untracked*, *all*, or *none*.
 
-```sh
-zstyle ':prezto:module:git:status:ignore' submodules 'all'
-```
+    zstyle ':dotzsh:module:git:status:ignore' submodules 'all'
 
 This setting affects all aliases and functions that call `git-status`.
 
@@ -35,9 +31,7 @@ Aliases
 
 Aliases are enabled by default. You can disable them with:
 
-```sh
-zstyle ':prezto:module:git:alias' skip 'yes'
-```
+    zstyle ':prezto:module:git:alias' skip 'yes'
 
 ### Git
 
@@ -71,7 +65,7 @@ zstyle ':prezto:module:git:alias' skip 'yes'
   - `gcam` stages all modified and deleted files, and records changes to the repository with the given message.
   - `gco` checks out a branch or paths to work tree.
   - `gcO` checks out hunks from the index or the tree interactively.
-  - `gcf` amends the tip of the current branch using the same log message as *HEAD*.
+  - `gcf` amends the tip of the current branch using the same log message as *HEAD*. 
   - `gcSf` amends the tip of the current branch using the same log message as *HEAD*. (Signed)
   - `gcF` amends the tip of the current branch.
   - `gcSF` amends the tip of the current branch. (Signed)
@@ -108,7 +102,6 @@ zstyle ':prezto:module:git:alias' skip 'yes'
   - `gf` downloads objects and references from another repository.
   - `gfa` downloads objects and references from all remote repositories.
   - `gfc` clones a repository into a new directory.
-  - `gfcr` clones a repository into a new directory including all submodules.
   - `gfm` fetches from and merges with another repository or local branch.
   - `gfr` fetches from and rebases on another repository or local branch.
 
@@ -324,7 +317,7 @@ Functions
   - `git-commit-lost` lists lost commits.
   - `git-dir` displays the path to the Git directory.
   - `git-hub-browse` opens the [GitHub][3] repository in the default browser.
-  - `git-hub-shorten-url` shortens [GitHub URLs][10].
+  - `git-hub-shorten-url` shortens GitHub URLs.
   - `git-info` exposes repository information via the `$git_info` associative
     array.
   - `git-root` displays the path to the working tree root.
@@ -341,9 +334,7 @@ To display information about the current repository in a prompt, define the
 following styles in the `prompt_name_setup` function, where the syntax for
 setting a style is as follows.
 
-```sh
-zstyle ':prezto:module:git:info:context:subcontext' format 'string'
-```
+    zstyle ':dotzsh:module:git:info:context:subcontext' format 'string'
 
 ### Main Contexts
 
@@ -370,9 +361,7 @@ zstyle ':prezto:module:git:info:context:subcontext' format 'string'
 
 The following contexts must be enabled with the following zstyle:
 
-```sh
-zstyle ':prezto:module:git:info' verbose 'yes'
-```
+    zstyle ':dotzsh:module:git:info' verbose 'yes'
 
 ### Verbose Contexts
 
@@ -399,24 +388,18 @@ zstyle ':prezto:module:git:info' verbose 'yes'
 | rebase               |    value    | Rebasing
 | rebase-interactive   |    value    | Rebasing interactively
 | rebase-merge         |    value    | Rebasing merge
-| revert               |    value    | Reverting
-| revert-sequence      |    value    | Reverting sequence
 
 First, format the repository state attributes. For example, to format the branch
 and remote names, define the following styles.
 
-```sh
-zstyle ':prezto:module:git:info:branch' format 'branch:%b'
-zstyle ':prezto:module:git:info:remote' format 'remote:%R'
-```
+    zstyle ':dotzsh:module:git:info:branch' format 'branch:%b'
+    zstyle ':dotzsh:module:git:info:remote' format 'remote:%R'
 
 Second, format how the above attributes are displayed in prompts.
 
-```sh
-zstyle ':prezto:module:git:info:keys' format \
-  'prompt'  ' git(%b)' \
-  'rprompt' '[%R]'
-```
+    zstyle ':dotzsh:module:git:info:keys' format \
+      'prompt'  ' git(%b)' \
+      'rprompt' '[%R]'
 
 Last, add `$git_info[prompt]` to `$PROMPT` and `$git_info[rprompt]` to
 `$RPROMPT` respectively and call `git-info` in the `prompt_name_preexec` hook
@@ -439,4 +422,3 @@ Authors
 [7]: https://github.com/sorin-ionescu/prezto/issues/219
 [8]: http://www.kernel.org/pub/software/scm/git/docs/git-log.html
 [9]: https://getgb.io/
-[10]: https://github.com/blog/985-git-io-github-url-shortener

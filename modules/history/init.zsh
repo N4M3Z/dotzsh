@@ -4,15 +4,18 @@
 # Authors:
 #   Robby Russell <robby@planetargon.com>
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   Martin Zeman  <martin.zeman@protonmail.ch>
 #
 
 #
 # Variables
 #
 
-HISTFILE="${ZDOTDIR:-$HOME}/.zhistory"       # The path to the history file.
-HISTSIZE=10000                   # The maximum number of events to save in the internal history.
-SAVEHIST=10000                   # The maximum number of events to save in the history file.
+# The path to the history file.
+HISTFILE="${ZSH}/private/zhistory"
+
+HISTSIZE=100000                   # The maximum number of events to save in the internal history.
+SAVEHIST=100000                   # The maximum number of events to save in the history file.
 
 #
 # Options
@@ -31,9 +34,12 @@ setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history
 setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing non-existent history.
 
+##
+# Functions
 #
+source ${0:h}/functions.zsh
+
+##
 # Aliases
 #
-
-# Lists the ten most used commands.
-alias history-stat="history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
+source ${0:h}/aliases.zsh

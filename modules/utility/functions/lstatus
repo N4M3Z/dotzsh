@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+# [esc + enter] : print Git/Svn status or list files with ls
+function lstatus()
+{
+    print
+    zle accept-line
+    if [ -d .git ]; then
+        git status --short
+    elif [ -d .svn ]; then
+        svn status
+    else
+        ll
+    fi
+    zle accept-line
+}

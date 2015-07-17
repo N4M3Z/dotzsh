@@ -41,21 +41,21 @@ function prompt_kylewest_setup {
   add-zsh-hook precmd prompt_kylewest_precmd
 
   # Set editor-info parameters.
-  zstyle ':prezto:module:editor:info:completing' format '%B%F{red}...%f%b'
-  zstyle ':prezto:module:editor:info:keymap:primary' format "%B%F{green}❯%f%b"
-  zstyle ':prezto:module:editor:info:keymap:alternate' format "%B%F{magenta}❮%f%b"
+  zstyle ':dotzsh:module:editor:info:completing' format '%B%F{red}...%f%b'
+  zstyle ':dotzsh:module:editor:info:keymap:primary' format "%B%F{green}❯%f%b"
+  zstyle ':dotzsh:module:editor:info:keymap:alternate' format "%B%F{magenta}❮%f%b"
 
   # Set git-info parameters.
-  zstyle ':prezto:module:git:info' verbose 'no'
-  zstyle ':prezto:module:git:info:branch' format '%F{yellow}%b%f'
-  zstyle ':prezto:module:git:info:dirty' format '%B%F{red}!%f%b'
-  zstyle ':prezto:module:git:info:indexed' format ' '
-  zstyle ':prezto:module:git:info:unindexed' format ' '
-  zstyle ':prezto:module:git:info:untracked' format ' '
-  zstyle ':prezto:module:git:info:keys' format 'prompt' '- %b%D '
+  zstyle ':dotzsh:module:git:info' verbose 'no'
+  zstyle ':dotzsh:module:git:info:branch' format '%F{yellow}%b%f'
+  zstyle ':dotzsh:module:git:info:dirty' format '%B%F{red}!%f%b'
+  zstyle ':dotzsh:module:git:info:indexed' format ' '
+  zstyle ':dotzsh:module:git:info:unindexed' format ' '
+  zstyle ':dotzsh:module:git:info:untracked' format ' '
+  zstyle ':dotzsh:module:git:info:keys' format 'prompt' '- %b%D '
 
   # Set ruby-info parameters.
-  zstyle ':prezto:module:ruby:info:version' format '%F{blue}[%v]%f'
+  zstyle ':dotzsh:module:ruby:info:version' format '%F{blue}[%v]%f'
 
   # Define prompts.
   PROMPT='%F{cyan}%c%f ${git_info:+${(e)git_info[prompt]}}${editor_info[keymap]} '

@@ -7,7 +7,7 @@
 
 # Return if requirements are not found.
 if [[ "$OSTYPE" != darwin* ]]; then
-  return 1
+    return 1
 fi
 
 #
@@ -19,3 +19,8 @@ alias cdf='cd "$(pfd)"'
 
 # Pushes directory to the current Finder directory.
 alias pushdf='pushd "$(pfd)"'
+
+zplug 'kristovatlas/osx-config-check', \
+    as:command, \
+    rename-to:'osx-config-check', \
+    use:'app.py'

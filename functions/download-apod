@@ -1,0 +1,22 @@
+#!/bin/zsh
+
+##
+#  @file
+#       download-apod
+#
+#  @brief
+#      Common download functions
+#
+#  @author
+#      N4M3Z <https://github.com/N4M3Z>
+
+function download-apod()
+{
+    local DIRECTORY="${HOME}/Downloads/APOD"
+    if [ ! -d "$DIRECTORY" ]; then
+        mkdir "$DIRECTORY"
+    fi
+
+    cd "$DIRECTORY"
+    wget -r -l2 -t1 -nd -N -np -w2 -A.jpg -erobots=off "http://apod.nasa.gov/apod/archivepix.html"
+}

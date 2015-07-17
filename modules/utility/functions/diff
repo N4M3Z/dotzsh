@@ -6,7 +6,7 @@
 #
 
 function diff {
-  if zstyle -t ':prezto:module:utility:diff' color; then
+  if zstyle -t ':dotzsh:module:utility:diff' color; then
     if (( $+commands[colordiff] )); then
       command colordiff "$@"
     else

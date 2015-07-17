@@ -3,7 +3,23 @@
 #
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   Martin Zeman <martin.zeman@protonmail.ch>
 #
+
+# Update core and all submodules
+function zsh-update()
+{
+    cd "${ZDOTDIR:-$HOME}/.zconfig"
+    git pull
+    git submodule update --init --recursive
+}
+
+# Merge upstream updates
+function zsh-merge()
+{
+    git merge upstream/master
+    git submodule update --init --recursive
+}
 
 # Checks if a file can be autoloaded by trying to load it in a subshell.
 function is-autoloadable {
@@ -28,4 +44,28 @@ function coalesce {
     return 0
   done
   return 1
+}
+
+# Check whether a command is defined
+function is-defined ()
+{
+    type "$1" &> /dev/null;
+}
+
+# Check whether the enviroment is Cygwin
+function is-cygwin ()
+{
+    [[ $('uname') == 'Cygwin' ]]
+}
+
+# Check whether the enviroment is Linux
+function is-linux ()
+{
+    [[ $('uname') == 'Linux' ]]
+}
+
+# Check whether the enviroment is OS X
+function is-osx ()
+{
+    [[ $('uname') == 'Darwin' ]]
 }

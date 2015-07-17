@@ -1,0 +1,41 @@
+#compdef dropbox
+# ------------------------------------------------------------------------------
+# Description
+# -----------
+#
+#  Completion script for Zgen (https://github.com/tarjoilija/zgen)
+#
+# ------------------------------------------------------------------------------
+# Authors
+# -------
+#
+#  * Martin Zeman (https://github.com/N4M3Z)
+#
+# ------------------------------------------------------------------------------
+
+local -a _dropbox_commands
+_dropbox_commands=(
+    "upload:<LOCAL_FILE/DIR ...>  <REMOTE_FILE/DIR>"
+    "download:<REMOTE_FILE/DIR> [LOCAL_FILE/DIR]"
+    "delete:<REMOTE_FILE/DIR>"
+    "move:<REMOTE_FILE/DIR> <REMOTE_FILE/DIR>"
+    "copy:<REMOTE_FILE/DIR> <REMOTE_FILE/DIR>"
+    "mkdir:<REMOTE_DIR>"
+    "list:[REMOTE_DIR]"
+    "share:<REMOTE_FILE>"
+    "info"
+    "unlink"
+)
+
+_describe -t commands "dropbox subcommand" _dropbox_commands
+
+_arguments \
+    '(-f)[<FILENAME> Load the configuration file from a specific file]' \
+    '(-s)[Skip already existing files when download/upload. Default: Overwrite]' \
+    '(-d)[Enable DEBUG mode]' \
+    '(-q)[Quiet mode. Don't show messages]' \
+    '(-p)[Show cURL progress meter]' \
+    '(-k)[Doesn't check for SSL certificates (insecure)]' \
+    '*:: :->subcmds' && return 0
+
+return 0

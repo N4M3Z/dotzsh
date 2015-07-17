@@ -8,7 +8,7 @@
 #
 
 # Load dependencies.
-pmodload 'ruby'
+dotzsh-module-load 'ruby'
 
 # Return if requirements are not found.
 if (( ! $+commands[bundle] )); then

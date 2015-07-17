@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+# Load dependencies.
+dotzsh-module-load 'powerline'

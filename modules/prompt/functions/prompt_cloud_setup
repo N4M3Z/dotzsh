@@ -18,7 +18,7 @@
 #     prompt cloud [<symbol>] [<color1>] [<color2>]
 #
 #   In ~/.zpreztorc:
-#     zstyle ':prezto:module:prompt' theme 'cloud' \
+#     zstyle ':dotzsh:module:prompt' theme 'cloud' \
 #       ['<symbol>'] \
 #       ['<color1>'] \
 #       ['<color2>']
@@ -35,7 +35,7 @@
 #
 
 # Load dependencies.
-pmodload 'helper'
+dotzsh-module-load 'helper'
 
 function prompt_cloud_precmd {
   setopt LOCAL_OPTIONS
@@ -54,7 +54,7 @@ This prompt's prefix symbol and colors are customizable:
   prompt cloud [<symbol>] [<color1>] [<color2>]
 
 In ~/.zpreztorc:
-  zstyle ':prezto:module:prompt' theme 'cloud' ['<symbol>'] ['<color1>'] ['<color2>']
+  zstyle ':dotzsh:module:prompt' theme 'cloud' ['<symbol>'] ['<color1>'] ['<color2>']
 
 If these options are not provided, the symbol defaults to ☁ with colors cyan
 and green.
@@ -105,11 +105,11 @@ function prompt_cloud_setup {
   add-zsh-hook precmd prompt_cloud_precmd
 
   # Set git-info parameters.
-  zstyle ':prezto:module:git:info' verbose 'yes'
-  zstyle ':prezto:module:git:info:dirty' format "%%B%F{$secondary_color}]%f%%b %F{yellow}⚡%f"
-  zstyle ':prezto:module:git:info:clean' format "%B%F{$secondary_color}]%f%b"
-  zstyle ':prezto:module:git:info:branch' format "%%B%F{$secondary_color}[%f%%b%%B%F{$primary_color}%b%f%%b"
-  zstyle ':prezto:module:git:info:keys' format \
+  zstyle ':dotzsh:module:git:info' verbose 'yes'
+  zstyle ':dotzsh:module:git:info:dirty' format "%%B%F{$secondary_color}]%f%%b %F{yellow}⚡%f"
+  zstyle ':dotzsh:module:git:info:clean' format "%B%F{$secondary_color}]%f%b"
+  zstyle ':dotzsh:module:git:info:branch' format "%%B%F{$secondary_color}[%f%%b%%B%F{$primary_color}%b%f%%b"
+  zstyle ':dotzsh:module:git:info:keys' format \
     'prompt' '%b%C%D' \
     'rprompt' ''
 

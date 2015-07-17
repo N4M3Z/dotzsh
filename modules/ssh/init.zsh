@@ -38,7 +38,7 @@ fi
 
 # Load identities.
 if ssh-add -l 2>&1 | grep -q 'The agent has no identities'; then
-  zstyle -a ':prezto:module:ssh:load' identities '_ssh_identities'
+  zstyle -a ':dotzsh:module:ssh:load' identities '_ssh_identities'
   if (( ${#_ssh_identities} > 0 )); then
     ssh-add "$_ssh_dir/${^_ssh_identities[@]}"  < /dev/null 2> /dev/null
   else

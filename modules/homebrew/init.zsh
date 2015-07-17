@@ -10,26 +10,22 @@ if [[ "$OSTYPE" != (darwin|linux)* ]]; then
   return 1
 fi
 
-#
+# Opt out of Homebrew's analytics
+export HOMEBREW_NO_ANALYTICS=1
+
+# additional security options
+export HOMEBREW_NO_INSECURE_REDIRECT=1
+export HOMEBREW_CASK_OPTS="--require-sha"
+
+# Since El Capitan, openssl is not linked by homebrew
+OPENSSL_LATEST_PATH=$(find /usr/local/Cellar/openssl -name "bin" -maxdepth 2 -type d | sort -nr | head -n 1)
+
+if [ -n "$OPENSSL_LATEST_PATH" ]
+then
+    export PATH="${OPENSSL_LATEST_PATH}:${PATH}"
+fi
+
+##
 # Aliases
 #
-
-# Homebrew
-alias brewc='brew cleanup'
-alias brewC='brew cleanup --force'
-alias brewi='brew install'
-alias brewl='brew list'
-alias brewo='brew outdated'
-alias brews='brew search'
-alias brewu='brew update && brew upgrade'
-alias brewx='brew remove'
-
-# Homebrew Cask
-alias cask='brew cask'
-alias caskc='brew cask cleanup --outdated'
-alias caskC='brew cask cleanup'
-alias caski='brew cask install'
-alias caskl='brew cask list'
-alias casko='brew cask outdated'
-alias casks='brew cask search'
-alias caskx='brew cask uninstall'
+source ${0:h}/aliases.zsh

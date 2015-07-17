@@ -48,8 +48,8 @@ function prompt_giddie_setup {
   add-zsh-hook precmd prompt_giddie_precmd
 
   # Set editor-info parameters.
-  zstyle ':prezto:module:editor:info:completing' format '%F{green}...%f'
-  zstyle ':prezto:module:editor:info:keymap:alternate' format '%F{yellow}--- COMMAND ---%f'
+  zstyle ':dotzsh:module:editor:info:completing' format '%F{green}...%f'
+  zstyle ':dotzsh:module:editor:info:keymap:alternate' format '%F{yellow}--- COMMAND ---%f'
 
   # Set vcs_info parameters.
   zstyle ':vcs_info:*' check-for-changes true

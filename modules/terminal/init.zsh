@@ -3,7 +3,6 @@
 #
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
-#   Olaf Conradi <olaf@conradi.org>
 #
 
 # Return if requirements are not found.
@@ -11,28 +10,38 @@ if [[ "$TERM" == (dumb|linux|*bsd*|eterm*) ]]; then
   return 1
 fi
 
-# Sets the terminal window title.
+if ([[ "$TERM_PROGRAM" = 'iTerm.app' ]] && \
+    zstyle -t ':dotzsh:module:tmux:iterm' integrate \
+); then
+    if [[ -s $file ]]
+    then
+        source ~/.iterm2_shell_integration.`basename $SHELL`
+    fi
+fi
+
+
+# Sets the terminal or terminal multiplexer window title.
 function set-window-title {
   local title_format{,ted}
-  zstyle -s ':prezto:module:terminal:window-title' format 'title_format' || title_format="%s"
+  zstyle -s ':dotzsh:module:terminal:window-title' format 'title_format' || title_format="%s"
   zformat -f title_formatted "$title_format" "s:$argv"
-  printf '\e]2;%s\a' "${(V%)title_formatted}"
+
+  if [[ "$TERM" == screen* ]]; then
+    title_format="\ek%s\e\\"
+  else
+    title_format="\e]2;%s\a"
+  fi
+
+  printf "$title_format" "${(V%)title_formatted}"
 }
 
 # Sets the terminal tab title.
 function set-tab-title {
   local title_format{,ted}
-  zstyle -s ':prezto:module:terminal:tab-title' format 'title_format' || title_format="%s"
+  zstyle -s ':dotzsh:module:terminal:tab-title' format 'title_format' || title_format="%s"
   zformat -f title_formatted "$title_format" "s:$argv"
-  printf '\e]1;%s\a' "${(V%)title_formatted}"
-}
 
-# Sets the terminal multiplexer tab title.
-function set-multiplexer-title {
-  local title_format{,ted}
-  zstyle -s ':prezto:module:terminal:multiplexer-title' format 'title_format' || title_format="%s"
-  zformat -f title_formatted "$title_format" "s:$argv"
-  printf '\ek%s\e\\' "${(V%)title_formatted}"
+  printf "\e]1;%s\a" ${(V%)title_formatted}
 }
 
 # Sets the tab and window titles with a given command.
@@ -60,11 +69,8 @@ function _terminal-set-titles-with-command {
     local truncated_cmd="${cmd/(#m)?(#c15,)/${MATCH[1,12]}...}"
     unset MATCH
 
-    if [[ "$TERM" == screen* ]]; then
-      set-multiplexer-title "$truncated_cmd"
-    fi
-    set-tab-title "$truncated_cmd"
     set-window-title "$cmd"
+    set-tab-title "$truncated_cmd"
   fi
 }
 
@@ -78,11 +84,8 @@ function _terminal-set-titles-with-path {
   local truncated_path="${abbreviated_path/(#m)?(#c15,)/...${MATCH[-12,-1]}}"
   unset MATCH
 
-  if [[ "$TERM" == screen* ]]; then
-    set-multiplexer-title "$truncated_path"
-  fi
-  set-tab-title "$truncated_path"
   set-window-title "$abbreviated_path"
+  set-tab-title "$truncated_path"
 }
 
 # Do not override precmd/preexec; append to the hook array.
@@ -117,13 +120,12 @@ then
 fi
 
 # Set up non-Apple terminals.
-if zstyle -t ':prezto:module:terminal' auto-title 'always' \
-  || (zstyle -t ':prezto:module:terminal' auto-title \
-    && ( ! [[ -n "$STY" || -n "$TMUX" ]] ))
+if zstyle -t ':dotzsh:module:terminal' auto-title \
+  && ( ! [[ -n "$STY" || -n "$TMUX" ]] )
 then
-  # Sets titles before the prompt is displayed.
+  # Sets the tab and window titles before the prompt is displayed.
   add-zsh-hook precmd _terminal-set-titles-with-path
 
-  # Sets titles before command execution.
+  # Sets the tab and window titles before command execution.
   add-zsh-hook preexec _terminal-set-titles-with-command
 fi

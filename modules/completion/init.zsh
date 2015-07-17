@@ -4,6 +4,7 @@
 # Authors:
 #   Robby Russell <robby@planetargon.com>
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   Martin Zeman <martin.zeman@protonmail.ch>
 #
 
 # Return if requirements are not found.
@@ -13,6 +14,16 @@ fi
 
 # Add zsh-completions to $fpath.
 fpath=("${0:h}/external/src" $fpath)
+
+# Menu-select widget from zsh/complist module:
+# Make sure that that module is loaded before the call to compinit so that that widget is also re-defined.
+if zstyle -t ':dotzsh:module:completion' complist
+then
+  zmodload zsh/complist
+fi
+
+# Load and initialize the completion system ignoring insecure directories.
+autoload -Uz compinit && compinit -i
 
 #
 # Options
@@ -24,21 +35,14 @@ setopt PATH_DIRS           # Perform path search even on command names with slas
 setopt AUTO_MENU           # Show completion menu on a successive tab press.
 setopt AUTO_LIST           # Automatically list choices on ambiguous completion.
 setopt AUTO_PARAM_SLASH    # If completed parameter is a directory, add a trailing slash.
-setopt EXTENDED_GLOB       # Needed for file modification glob modifiers with compinit
 unsetopt MENU_COMPLETE     # Do not autoselect the first completion entry.
 unsetopt FLOW_CONTROL      # Disable start/stop characters in shell editor.
 
-# Load and initialize the completion system ignoring insecure directories with a
-# cache time of 20 hours, so it should almost always regenerate the first time a
-# shell is opened each day.
-autoload -Uz compinit
-_comp_files=(${ZDOTDIR:-$HOME}/.zcompdump(Nm-20))
-if (( $#_comp_files )); then
-  compinit -i -C
-else
-  compinit -i
+# Turn off beeping for ambiguous completions
+if zstyle -t ':dotzsh:module:completion' no-list-beep
+then
+  setopt NO_LIST_BEEP
 fi
-unset _comp_files
 
 #
 # Styles
@@ -49,7 +53,7 @@ zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path "${ZDOTDIR:-$HOME}/.zcompcache"
 
 # Case-insensitive (all), partial-word, and then substring completion.
-if zstyle -t ':prezto:module:completion:*' case-sensitive; then
+if zstyle -t ':dotzsh:module:completion:*' case-sensitive; then
   zstyle ':completion:*' matcher-list 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
   setopt CASE_GLOB
 else
@@ -76,9 +80,8 @@ zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
-# Increase the number of errors based on the length of the typed word. But make
-# sure to cap (at 7) the max-errors to avoid hanging.
-zstyle -e ':completion:*:approximate:*' max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3>7?7:($#PREFIX+$#SUFFIX)/3))numeric)'
+# Increase the number of errors based on the length of the typed word.
+zstyle -e ':completion:*:approximate:*' max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3))numeric)'
 
 # Don't complete unavailable commands.
 zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec))'
@@ -150,9 +153,13 @@ if [[ -s "$HOME/.mutt/aliases" ]]; then
 fi
 
 # SSH/SCP/RSYNC
-zstyle ':completion:*:(ssh|scp|rsync):*' tag-order 'hosts:-host:host hosts:-domain:domain hosts:-ipaddr:ip\ address *'
+zstyle ':completion:*:(scp|rsync):*' tag-order 'hosts:-host:host hosts:-domain:domain hosts:-ipaddr:ip\ address *'
 zstyle ':completion:*:(scp|rsync):*' group-order users files all-files hosts-domain hosts-host hosts-ipaddr
+zstyle ':completion:*:ssh:*' tag-order 'hosts:-host:host hosts:-domain:domain hosts:-ipaddr:ip\ address *'
 zstyle ':completion:*:ssh:*' group-order users hosts-domain hosts-host users hosts-ipaddr
 zstyle ':completion:*:(ssh|scp|rsync):*:hosts-host' ignored-patterns '*(.|:)*' loopback ip6-loopback localhost ip6-localhost broadcasthost
 zstyle ':completion:*:(ssh|scp|rsync):*:hosts-domain' ignored-patterns '<->.<->.<->.<->' '^[-[:alnum:]]##(.[-[:alnum:]]##)##' '*@*'
 zstyle ':completion:*:(ssh|scp|rsync):*:hosts-ipaddr' ignored-patterns '^(<->.<->.<->.<->|(|::)([[:xdigit:].]##:(#c,2))##(|%*))' '127.0.0.<->' '255.255.255.255' '::1' 'fe80::*'
+
+# autoload predict-on
+# predict-on

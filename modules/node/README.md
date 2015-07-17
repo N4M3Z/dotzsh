@@ -31,10 +31,8 @@ Theming
 To display the version number of the current Node.js version, define the
 following style inside the `prompt_name_setup` function.
 
-```sh
-# %v - Node.js version.
-zstyle ':prezto:module:node:info:version' format 'version:%v'
-```
+    # %v - Node.js version.
+    zstyle ':dotzsh:module:node:info:version' format 'version:%v'
 
 Then add `$node_info[version]` to either `$PROMPT` or `$RPROMPT` and call
 `node-info` in `prompt_name_preexec` hook function.

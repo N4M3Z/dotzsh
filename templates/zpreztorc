@@ -42,6 +42,13 @@ zstyle ':prezto:load' pmodule \
 # zstyle ':prezto:module:autosuggestions:color' found ''
 
 #
+# Environment
+#
+
+# You may need to manually set your language environment
+# zstyle ':prezto:environment' language 'en_US.UTF-8'
+
+#
 # Editor
 #
 
@@ -53,6 +60,37 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 
 # Allow the zsh prompt context to be shown.
 #zstyle ':prezto:module:editor' ps-context 'yes'
+
+#
+# Completion
+#
+
+# Turn off beeping for ambiguous completions
+zstyle ':prezto:module:completion' no-list-beep 'yes'
+
+# Menu select
+zstyle ':prezto:module:completion' complist 'yes'
+
+# Completion waiting dots
+# zstyle ':prezto:module:completion' waiting-dots 'yes'
+
+#
+# Utility
+#
+zstyle ':prezto:module:utility:grep' color '1;32'
+
+#
+# Completion
+#
+
+# Turn off beeping for ambiguous completions
+zstyle ':prezto:module:completion' no-list-beep 'yes'
+
+# Menu select
+zstyle ':prezto:module:completion' complist 'yes'
+
+# Completion waiting dots
+# zstyle ':prezto:module:completion' waiting-dots 'yes'
 
 #
 # Git
@@ -67,6 +105,11 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 
 # Set the command prefix on non-GNU systems.
 # zstyle ':prezto:module:gnu-utility' prefix 'g'
+
+#
+# History
+#
+zstyle ':prezto:module:history' format 'yyyy-mm-dd'
 
 #
 # History Substring Search

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+## Homebrew API
+if [ ! -z "${BREWPATH}" ] ; then
+    export HOMEBREW_GITHUB_API_TOKEN="ffb2fdd72e9df5cf8665a5f84da06c5c6e4e7725"
+fi
+
+function decrypt-citibank()
+{
+    qpdf --decrypt --password=AmWfuu7b %1 %2 # eStatement_11242014.pdf eStatement_2014-11-24.pdf
+}

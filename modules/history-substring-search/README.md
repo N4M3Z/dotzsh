@@ -24,9 +24,7 @@ Settings
 To enable case-sensitivity for this module only, add the following line to
 *zpreztorc*:
 
-```sh
-zstyle ':prezto:module:history-substring-search' case-sensitive 'yes'
-```
+    zstyle ':dotzsh:module:history-substring-search' case-sensitive 'yes'
 
 ### Highlighting
 
@@ -36,27 +34,19 @@ positive results.
 To enable highlighting for this module only, add the following line to
 *zpreztorc*:
 
-```sh
-zstyle ':prezto:module:history-substring-search' color 'yes'
-```
+    zstyle ':dotzsh:module:history-substring-search' color 'yes'
 
 To set the query found color, add the following line to *zpreztorc*:
 
-```sh
-zstyle ':prezto:module:history-substring-search:color' found ''
-```
+    zstyle ':dotzsh:module:history-substring-search:color' found ''
 
 To set the query not found color, add the following line to *zpreztorc*:
 
-```sh
-zstyle ':prezto:module:history-substring-search:color' not-found ''
-```
+    zstyle ':dotzsh:module:history-substring-search:color' not-found ''
 
 To set the search globbing flags, add the following line to *zpreztorc*:
 
-```sh
-zstyle ':prezto:module:history-substring-search' globbing-flags ''
-```
+    zstyle ':dotzsh:module:history-substring-search' globbing-flags ''
 
 Authors
 -------

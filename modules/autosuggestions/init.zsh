@@ -1,35 +1,25 @@
+##
+#  @file
+#     autosuggestions/init.zsh
 #
-# Integrates zsh-autosuggestions into Prezto.
+#  @brief
+#     Fish-like fast/unobtrusive autosuggestions for zsh (from tarruda/zsh-autosuggestions)
 #
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#  @author
+#     Sorin Ionescu <sorin.ionescu@gmail.com>
+#     Martin Zeman <martin.zeman@protonmail.ch>
+#
+#  @note
+#     Must be loaded after zsh-syntax-highlighting
 #
 
 # Load dependencies.
-pmodload 'editor'
+dotzsh-module-load 'editor'
 
 # Source module files.
-source "${0:h}/external/zsh-autosuggestions.zsh" || return 1
-
-#
-# Highlighting
-#
-
-# Set highlight color, default 'fg=8'.
-zstyle -s ':prezto:module:autosuggestions:color' found \
-  'ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE' || ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
-
-# Disable highlighting.
-if ! zstyle -t ':prezto:module:autosuggestions' color; then
-  ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=''
-fi
-
-#
-# Key Bindings
-#
-
-if [[ -n "$key_info" ]]; then
-  # vi
-  bindkey -M viins "$key_info[Control]F" vi-forward-word
-  bindkey -M viins "$key_info[Control]E" vi-add-eol
-fi
+zplug "zsh-users/zsh-autosuggestions", \
+    use:zsh-autosuggestions.zsh, \
+    on:"zsh-users/zsh-syntax-highlighting", \
+    on:"zsh-users/zsh-history-substring-search", \
+    defer:3, \
+    hook-load:"source ${0:h}/config.zsh"
