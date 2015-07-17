@@ -9,10 +9,8 @@ The difference is in approach to some aspects of the framework.
 
 - I prefer a different commenting style. There is limited support for [Doxygen][8] provided via [bash-doxygen][9] and for it is my personal prefernce to adhere to this standard.
 
-See also the discussion here: [#860][5].
+See also the discussion here at [#860][5]
 
-Development
------------
 Apart from modifying [Prezto][2] modules to adhere to the new modular approach, [zsh-core][5] introduces support for new modules. I might eventually try to send a pull request back to [Prezto][2], I might not.
 
 The master branch of [zsh-core][5] currently mirrors [Prezto][2], checkout [developer](https://github.com/N4M3Z/zsh-core/tree/developer) branch instead, to check out all the modifications. A comprehensive list of differences w.r.t. [Prezto][2] follows:
@@ -30,7 +28,7 @@ The master branch of [zsh-core][5] currently mirrors [Prezto][2], checkout [deve
 - [powerline](https://github.com/N4M3Z/zsh-core/tree/module/powerline): Adds support for [powerline](https://powerline.readthedocs.org/en/master/).
 - [profiles](https://github.com/N4M3Z/zsh-core/tree/module/profiles): Adds support for machine specific profiles stored in `$ZDOTDIR/profiles`
 - [pygmentize](https://github.com/N4M3Z/zsh-core/tree/module/pygmentize): Adds support for [Pygments](http://pygments.org/docs/cmdline/)
-- [root](https://github.com/N4M3Z/zsh-core/tree/module/root): Adds support for [CERN ROOT](https://root.cern.ch)
+- [root](https://github.com/N4M3Z/zsh-core/tree/module/root): Adds support for [CERN ROOT][https://root.cern.ch]
 - [sublime](https://github.com/N4M3Z/zsh-core/tree/module/sublime): Adds support for [Sublime Text](http://www.sublimetext.com)
 - [trash](https://github.com/N4M3Z/zsh-core/tree/module/trash): Adds support for [trash](https://github.com/sindresorhus/trash)
 - [trim](https://github.com/N4M3Z/zsh-core/tree/module/trim): Adds functions for enabling trim on third-party SSDs on OS X.
@@ -71,25 +69,21 @@ Installation follows the same steps given in [Prezto][2] documentation. It will 
 
   1. Launch Zsh:
 
-     ```console
-     zsh
-     ```
+        `zsh`
 
   2. Clone the repository:
 
-     ```console
-     git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-     ```
+        `git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"`
 
   3. Create a new Zsh configuration by copying the Zsh configuration files
      provided:
 
-     ```sh
-     setopt EXTENDED_GLOB
-     for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-       ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-     done
-     ```
+        ```
+        setopt EXTENDED_GLOB
+        for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+          ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+        done
+        ```
 
      Note: If you already have any of the given config files, ln will error. In
      simple cases you can add `source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"` to
@@ -99,9 +93,7 @@ Installation follows the same steps given in [Prezto][2] documentation. It will 
 
   4. Set Zsh as your default shell:
 
-     ```console
-     chsh -s /bin/zsh
-     ```
+        `chsh -s /bin/zsh`
 
   5. Open a new Zsh terminal window or tab.
 
@@ -114,18 +106,9 @@ window or tab.
 Updating
 --------
 
-Run `zprezto-update` to automatically check if there is an update to zprezto.
-If there are no file conflicts, zprezto and its submodules will be
-automatically updated. If there are conflicts you will instructed to go into
-the `$ZPREZTODIR` directory and resolve them yourself.
+Pull the latest changes and update submodules.
 
-To pull the latest changes and update submodules manually:
-
-```console
-cd $ZPREZTODIR
-git pull
-git submodule update --init --recursive
-```
+    git pull && git submodule update --init --recursive
 
 Usage
 -----
