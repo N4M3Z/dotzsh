@@ -45,6 +45,11 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 # zstyle ':prezto:module:editor' dot-expansion 'yes'
 
 #
+# Utility
+#
+zstyle ':prezto:module:utility:grep' color '1;32'
+
+#
 # Git
 #
 
