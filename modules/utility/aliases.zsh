@@ -248,7 +248,7 @@ alias -g '!NUL'="> /dev/null 2>&1"
 
 # Smart grep
 # R - recursive, n - line numbers, H - always print filename headers, C - print 5 lines of surrounding context, exclude versioning directories
-alias sgrep='grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS} '
+alias sgrep="${aliases[grep]:-grep} -R -n -H -C 5 --exclude-dir={.git,.svn,CVS} "
 
 # Smart find
 alias fd='find . -type d -name'
