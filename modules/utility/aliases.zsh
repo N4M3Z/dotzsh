@@ -225,3 +225,23 @@ if is-at-least 4.2.0 ; then
     alias -s ace="unace l"
 
 fi
+
+## Global aliases
+
+# Note: Global aliases can be evil! Using combinations that have limited number of uses is a good choice.
+# A general good option is ] as it will rarely be needed without a preceding [ and you don't need to press shift to type it.
+# You might also use !, ~, ^ or = as a suffix as they tend to only be special as a prefix.
+
+alias -g '!H'='| head'
+alias -g '!T'='| tail'
+alias -g '!L'='| less'
+alias -g '!M'='| most'
+alias -g '!G'='| egrep'
+alias -g '!C'='| wc -l'
+alias -g '!S'='| sort -u'
+alias -g '!A'='| awk'
+alias -g '!P'='2>&1| pygmentize -g'
+alias -g '!TL'='| tail -20'
+alias -g '!LE'="2>&1 | less"
+alias -g '!NE'="2> /dev/null"
+alias -g '!NUL'="> /dev/null 2>&1"
