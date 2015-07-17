@@ -85,3 +85,9 @@ alias lt='ll -tr'        # Lists sorted by date, most recent last.
 alias lc='lt -c'         # Lists sorted by date, most recent last, shows change time.
 alias lu='lt -u'         # Lists sorted by date, most recent last, shows access time.
 alias sl='ls'            # I often screw this up.
+
+alias dir="ls -hGlAC"     # human readable, colorized, long list, show almost all, multi-column (default)
+alias ldot="ls -hGFld .*" # human readable, colorized, show type, long list, directories listed as plain files, only entries starting with a "." are shown
+
+# Creates a directory and then changes to it. Defined in functions.
+alias take="mkdcd"
