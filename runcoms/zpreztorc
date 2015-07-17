@@ -64,6 +64,11 @@ zstyle ':prezto:module:completion' complist 'yes'
 # zstyle ':prezto:module:completion' waiting-dots 'yes'
 
 #
+# Utility
+#
+zstyle ':prezto:module:utility:grep' color '1;32'
+
+#
 # Git
 #
 
