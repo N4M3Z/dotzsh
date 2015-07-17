@@ -245,3 +245,13 @@ alias -g '!TL'='| tail -20'
 alias -g '!LE'="2>&1 | less"
 alias -g '!NE'="2> /dev/null"
 alias -g '!NUL'="> /dev/null 2>&1"
+
+# Smart grep
+# R - recursive, n - line numbers, H - always print filename headers, C - print 5 lines of surrounding context, exclude versioning directories
+alias sgrep='grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS} '
+
+# Smart find
+alias fd='find . -type d -name'
+alias ff='find . -type f -name'
+alias findf='fd'
+alias findd='ff'
