@@ -9,8 +9,10 @@ The difference is in approach to some aspects of the framework.
 
 - I prefer a different commenting style. There is limited support for [Doxygen][8] provided via [bash-doxygen][9] and for it is my personal prefernce to adhere to this standard.
 
-See also the discussion here at [#860][5]
+See also the discussion here: [#860][5].
 
+Development
+-----------
 Apart from modifying [Prezto][2] modules to adhere to the new modular approach, [zsh-core][5] introduces support for new modules. I might eventually try to send a pull request back to [Prezto][2], I might not.
 
 The master branch of [zsh-core][5] currently mirrors [Prezto][2], checkout [developer](https://github.com/N4M3Z/zsh-core/tree/developer) branch instead, to check out all the modifications. A comprehensive list of differences w.r.t. [Prezto][2] follows:
@@ -28,7 +30,7 @@ The master branch of [zsh-core][5] currently mirrors [Prezto][2], checkout [deve
 - [powerline](https://github.com/N4M3Z/zsh-core/tree/module/powerline): Adds support for [powerline](https://powerline.readthedocs.org/en/master/).
 - [profiles](https://github.com/N4M3Z/zsh-core/tree/module/profiles): Adds support for machine specific profiles stored in `$ZDOTDIR/profiles`
 - [pygmentize](https://github.com/N4M3Z/zsh-core/tree/module/pygmentize): Adds support for [Pygments](http://pygments.org/docs/cmdline/)
-- [root](https://github.com/N4M3Z/zsh-core/tree/module/root): Adds support for [CERN ROOT][https://root.cern.ch]
+- [root](https://github.com/N4M3Z/zsh-core/tree/module/root): Adds support for [CERN ROOT](https://root.cern.ch)
 - [sublime](https://github.com/N4M3Z/zsh-core/tree/module/sublime): Adds support for [Sublime Text](http://www.sublimetext.com)
 - [trash](https://github.com/N4M3Z/zsh-core/tree/module/trash): Adds support for [trash](https://github.com/sindresorhus/trash)
 - [trim](https://github.com/N4M3Z/zsh-core/tree/module/trim): Adds functions for enabling trim on third-party SSDs on OS X.
