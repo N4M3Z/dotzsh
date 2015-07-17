@@ -18,33 +18,33 @@
 #       http://zshwiki.org/home/examples/aliassuffix
 #
 
-# Disable correction.
-alias ack='nocorrect ack'
-alias cd='nocorrect cd'
-alias cp='nocorrect cp'
-alias ebuild='nocorrect ebuild'
-alias gcc='nocorrect gcc'
-alias gist='nocorrect gist'
-alias grep='nocorrect grep'
-alias heroku='nocorrect heroku'
-alias ln='nocorrect ln'
-alias man='nocorrect man'
-alias mkdir='nocorrect mkdir'
-alias mv='nocorrect mv'
-alias mysql='nocorrect mysql'
-alias rm='nocorrect rm'
+# Disable correction. Do not overwrite previous aliases.
+alias ack="nocorrect ${aliases[ack]:-ack}"
+alias cd="nocorrect ${aliases[cd]:-cd}"
+alias cp="nocorrect ${aliases[cp]:-cp}"
+alias ebuild="nocorrect ${aliases[ebuild]:-ebuild}"
+alias gcc="nocorrect ${aliases[gcc]:-gcc}"
+alias gist="nocorrect ${aliases[gist]:-gist}"
+alias grep="nocorrect ${aliases[grep]:-grep}"
+alias heroku="nocorrect ${aliases[heroku]:-heroku}"
+alias ln="nocorrect ${aliases[ln]:-ln}"
+alias man="nocorrect ${aliases[man]:-man}"
+alias mkdir="nocorrect ${aliases[mkdir]:-mkdir}"
+alias mv="nocorrect ${aliases[mv]:-mv}"
+alias mysql="nocorrect ${aliases[mysql]:-mysql}"
+alias rm="nocorrect ${aliases[rm]:-rm}"
 
-# Disable globbing.
-alias bower='noglob bower'
-alias fc='noglob fc'
-alias find='noglob find'
-alias ftp='noglob ftp'
+# Disable globbing. Do not overwrite previous aliases.
+alias bower="noglob ${aliases[bower]:-bower}"
+alias fc="noglob ${aliases[fc]:-fc}"
+alias find="noglob ${aliases[find]:-find}"
+alias ftp="noglob ${aliases[ftp]:-ftp}"
 alias history="noglob ${aliases[history]:-history}"
-alias locate='noglob locate'
-alias rake='noglob rake'
-alias rsync='noglob rsync'
-alias scp='noglob scp'
-alias sftp='noglob sftp'
+alias locate="noglob ${aliases[locate]:-locate}"
+alias rake="noglob ${aliases[rake]:-rake}"
+alias rsync="noglob ${aliases[rsync]:-rsync}"
+alias scp="noglob ${aliases[scp]:-scp}"
+alias sftp="noglob ${aliases[sftp]:-sftp}"
 
 # Define general aliases.
 alias _='sudo'
