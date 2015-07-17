@@ -10,7 +10,7 @@
 # @authors
 #      Robby Russell <robby@planetargon.com>
 #      Sorin Ionescu <sorin.ionescu@gmail.com>
-#      Martin Zeman  <martin.zeman@protonmailch>
+#      Martin Zeman  <martin.zeman@protonmail.ch>
 #
 
 ##
