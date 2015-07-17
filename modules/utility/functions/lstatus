@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # [esc + enter] : print Git/Svn status or list files with ls
-function ls-status()
+function lstatus()
 {
     print
     zle accept-line
