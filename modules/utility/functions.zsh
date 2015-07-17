@@ -16,6 +16,7 @@
 function mkdcd {
   [[ -n "$1" ]] && mkdir -p "$1" && builtin cd "$1"
 }
+alias take="mkdcd"
 
 # Changes to a directory and lists its contents.
 function cdls {
