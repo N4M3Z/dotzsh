@@ -9,11 +9,16 @@
 #     Martin Zeman <martin.zeman@protonmail.ch>
 #
 
-## Source module files.
-source "${0:h}/external/powerline/bindings/zsh/powerline.zsh" || return 1
+pmodload 'environment'
 
-if is-defined 'powerline-daemon'; then
-    powerline-daemon -q
-    export POWERLINE_BASH_CONTINUATION=1
-    export POWERLINE_BASH_SELECT=1
+# Determine if command exists
+if (( $+commands[powerline-daemon] ))
+then
+    powerline-daemon
+
+    ## Source module files.
+    source "${0:h}/external/powerline/bindings/zsh/powerline.zsh"
+else
+    echo "Powerline not found on your system, please install it, e.g.:"
+    echo "> pip install powerline-status"
 fi
