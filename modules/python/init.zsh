@@ -44,13 +44,19 @@ if (( ! $+commands[python] && ! $+commands[pyenv] )); then
   return 1
 fi
 
-# Load virtualenvwrapper into the shell session.
-if (( $+commands[virtualenvwrapper.sh] )); then
+# Load virtualenvwrapper into the shell session, unless requested not to
+zstyle -t ':prezto:module:python' skip-virtualenvwrapper-init
+if (( $? && $+commands[virtualenvwrapper.sh] )); then
   # Set the directory where virtual environments are stored.
   export WORKON_HOME="$HOME/.virtualenvs"
 
   # Disable the virtualenv prompt.
   VIRTUAL_ENV_DISABLE_PROMPT=1
 
-  source "$commands[virtualenvwrapper.sh]"
+  if (( $+commands[pyenv] )); then
+    export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+    pyenv virtualenvwrapper
+  else
+    source "$commands[virtualenvwrapper.sh]"
+  fi
 fi
