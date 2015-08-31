@@ -15,6 +15,16 @@ if [[ -s "$HOME/.pyenv/bin/pyenv" ]]; then
 elif (( $+commands[pyenv] )); then
   eval "$(pyenv init -)"
 
+# pyenv-virtualenv
+# Load manually installed pyenv-virtualenv into the shell session.
+if [[ -s "$HOME/.pyenv/bin/pyenv-virtualenv" ]]; then
+  eval "$(pyenv virtualenv-init -)"
+
+# Load package manager installed pyenv-virtualenv into the shell session.
+elif (( $+commands[pyenv-virtualenv] )); then
+  eval "$(pyenv virtualenv-init -)"
+fi
+
 # Prepend PEP 370 per user site packages directory, which defaults to
 # ~/Library/Python on Mac OS X and ~/.local elsewhere, to PATH. The
 # path can be overridden using PYTHONUSERBASE.
