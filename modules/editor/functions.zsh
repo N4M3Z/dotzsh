@@ -1,6 +1,16 @@
+##
+#  @file
+#      editor/functions.zsh
 #
-# Functions
+#  @authors:
+#      Sorin Ionescu <sorin.ionescu@gmail.com>
+#      Martin Zeman <martin.zeman@protonmail.ch>
 #
+
+# Return if requirements are not found.
+if [[ "$TERM" == 'dumb' ]]; then
+  return 1
+fi
 
 # Exposes information about the Zsh Line Editor via the $editor_info associative
 # array.
@@ -123,3 +133,10 @@ function prepend-sudo {
   fi
 }
 zle -N prepend-sudo
+
+zmodload -i zsh/parameter
+function insert-last-command-output()
+{
+    LBUFFER+="$(eval $history[$((HISTCMD-1))])"
+}
+zle -N insert-last-command-output
