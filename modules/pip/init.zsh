@@ -9,6 +9,12 @@
 # If you would like to clear your cache, go ahead and do a
 # "zsh-pip-clear-cache".
 
+# Return if requirements are not found.
+if (( ! $+commands[pip] )); then
+  echo "Powerline not found on your system, please install it, e.g.:"
+  echo "> sudo python ${0:h}/external/get-pip.py"
+fi
+
 ZSH_PIP_CACHE_FILE=~/.pip/zsh-cache
 ZSH_PIP_INDEXES=(https://pypi.python.org/simple/)
 
