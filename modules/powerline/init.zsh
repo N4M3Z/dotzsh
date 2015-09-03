@@ -14,7 +14,7 @@ pmodload 'environment'
 # Determine if command exists
 if (( $+commands[powerline-daemon] ))
 then
-    powerline-daemon
+    powerline-daemon -q
 
     ## Source module files.
     source "${0:h}/external/powerline/bindings/zsh/powerline.zsh"
