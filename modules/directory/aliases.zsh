@@ -11,6 +11,9 @@
 #      Martin Zeman <https://github.com/N4M3Z>
 #
 
+# Load dependencies.
+pmodload "helper"
+
 ## Directory operations
 #alias ..="cd .."     # handled by auto_cd
 #alias ...="cd ../.." # handled by auto_cd
