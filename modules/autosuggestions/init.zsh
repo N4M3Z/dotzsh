@@ -17,7 +17,7 @@
 pmodload 'editor'
 
 # Source module files.
-source "${0:h}/external/zsh-autosuggestions.zsh" || return 1
+zplug "zsh-users/zsh-autosuggestions", use:zsh-autosuggestions.zsh, defer:2
 
 #
 # Highlighting
@@ -41,8 +41,7 @@ if [[ -n "$key_info" ]]; then
   bindkey -M viins "$key_info[Control]F" vi-forward-word
   bindkey -M viins "$key_info[Control]E" vi-add-eol
 
-# ## LEGACY LOADING
-# source "${0:h}/external/autosuggestions.zsh" || return 1
+# Legacy loading:
 #
 # if is-defined 'autosuggest-start'
 # then

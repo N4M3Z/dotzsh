@@ -4,10 +4,25 @@
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
+export ZPLUG_HOME=/usr/local/opt/zplug
 
 # Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+if [[ -s "${ZPLUG_HOME}/init.zsh" ]]; then
+    source $ZPLUG_HOME/init.zsh
+
+    zplug "~/.zsh", use:init.zsh, from:local
+
+    # Install plugins if there are plugins that have not been installed
+    if ! zplug check --verbose; then
+        printf "Install? [y/N]: "
+        if read -q; then
+            echo; zplug install
+        fi
+    fi
+
+    # Then, source plugins and add commands to $PATH
+    zplug load --verbose
+
 fi
 
 # Customize to your needs...

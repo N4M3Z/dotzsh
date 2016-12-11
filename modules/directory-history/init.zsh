@@ -27,4 +27,4 @@ executable dirhist
 executable dirlog
 
 # Source module files.
-source "${0:h}/external/directory-history.plugin.zsh" || return 1
+zplug "tymm/zsh-directory-history", use:directory-history.plugin.zsh

@@ -10,4 +10,4 @@
 #
 
 ## Source module files.
-source "${0:h}/external/composure.sh" || return 1
+zplug "erichs/composure", use:composure.sh

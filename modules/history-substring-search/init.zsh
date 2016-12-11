@@ -12,7 +12,7 @@ pmodload 'editor'
 pmodload 'helper'
 
 # Source module files.
-source "${0:h}/external/zsh-history-substring-search.zsh" || return 1
+zplug "zsh-users/zsh-history-substring-search", use:zsh-history-substring-search.zsh
 
 #
 # Search

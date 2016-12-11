@@ -14,4 +14,4 @@ export ZSH_PLUGINS_ALIAS_TIPS_TEXT="Alias tip: " # Variable needs to be exported
 zstyle -s ":prezto:module:alias-tips" text "ZSH_PLUGINS_ALIAS_TIPS_TEXT"
 
 # Source module files.
-source "${0:h}/external/alias-tips.plugin.zsh" || return 1
+zplug "djui/alias-tips", use:alias-tips.plugin.zsh

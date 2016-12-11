@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 ##
 #  @file
 #
@@ -11,4 +9,4 @@
 #
 
 # Source module files.
-source "${0:h}/external/blackbox.plugin.zsh" || return 1
+zplug "StackExchange/blackbox", use:blackbox.plugin.zsh

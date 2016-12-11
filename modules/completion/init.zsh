@@ -12,6 +12,8 @@ if [[ "$TERM" == 'dumb' ]]; then
   return 1
 fi
 
+zplug "zsh-users/zsh-completions"
+
 # Add zsh-completions to $fpath.
 fpath=("${0:h}/external/src" $fpath)
 

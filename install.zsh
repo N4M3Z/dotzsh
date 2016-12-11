@@ -7,7 +7,7 @@
 #
 #  @author N4M3Z <https://github.com/N4M3Z>
 
-function link.file()
+function link-file()
 {
     for file in "$@"
     do
@@ -46,9 +46,8 @@ ln -s "$CURRENT_DIR" "${ZDOTDIR:-$HOME}/.zprezto"
 
 setopt EXTENDED_GLOB
 # Link everything except README.md
-link.file "$CURRENT_DIR"/runcoms/^README.md(.N)
-link.file "$CURRENT_DIR"/private/^README.md(.N)
-# link.file "$CURRENT_DIR"/profiles/^README.md(.N)
+link-file "$CURRENT_DIR"/templates/^README.md(.N)
+link-file "$CURRENT_DIR"/private/^README.md(.N)
 
 zsh-core-update
 
