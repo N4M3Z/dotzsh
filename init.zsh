@@ -6,6 +6,12 @@
 #   Martin Zeman <martin.zeman@protonmail.ch>
 #
 
+# Measure elapsed time
+typeset -F SECONDS
+
+# Debug
+# set -x
+
 ##
 # Version Check
 #
@@ -114,6 +120,10 @@ function pmodload()
         zstyle ":prezto:module:$pmodule" loaded 'no'
       fi
     fi
+
+    # Print elapsed time
+    # echo "$pmodule: ${SECONDS}s elapsed"
+
   done
 }
 
@@ -146,3 +156,6 @@ unset zfunction{s,}
 zstyle -a ':prezto:load' pmodule 'pmodules'
 pmodload "$pmodules[@]"
 unset pmodules
+
+# Print elapsed time
+echo "${SECONDS}s elapsed"
