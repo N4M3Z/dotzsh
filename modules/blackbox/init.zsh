@@ -9,4 +9,4 @@
 #
 
 # Source module files.
-zplug "StackExchange/blackbox", use:blackbox.plugin.zsh
+zplug "StackExchange/blackbox", as:plugin

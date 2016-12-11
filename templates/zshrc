@@ -10,7 +10,9 @@ export ZPLUG_HOME=/usr/local/opt/zplug
 if [[ -s "${ZPLUG_HOME}/init.zsh" ]]; then
     source $ZPLUG_HOME/init.zsh
 
-    # zplug "~/.zsh", from:local, use:init.zsh
+    # zplug "~/.zsh", from:local, of:init.zsh
+    # zplug "~/.private", from:local
+
     # Source Zsh framework.
     if [[ -s "${ZDOTDIR:-$HOME}/.zsh/init.zsh" ]]
     then
@@ -18,7 +20,6 @@ if [[ -s "${ZPLUG_HOME}/init.zsh" ]]; then
     fi
 
     # Private tokens
-    # export SSH_KEY_PATH="~/.ssh/dsa_id"
     if [[ -s "${ZDOTDIR:-$HOME}/.private" ]]
     then
         source "${ZDOTDIR:-$HOME}/.private"

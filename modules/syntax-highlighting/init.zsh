@@ -11,7 +11,7 @@ if ! zstyle -t ':prezto:module:syntax-highlighting' color; then
 fi
 
 # Source module files.
-zplug "zsh-users/zsh-syntax-highlighting", use:zsh-syntax-highlighting.zsh
+zplug "zsh-users/zsh-syntax-highlighting", as:plugin
 
 # Set highlighters.
 zstyle -a ':prezto:module:syntax-highlighting' highlighters 'ZSH_HIGHLIGHT_HIGHLIGHTERS'
