@@ -12,3 +12,8 @@ fi
 
 # Load dependencies.
 pmodload 'helper'
+
+##
+# Aliases
+#
+source ${0:h}/aliases.zsh

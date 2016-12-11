@@ -60,3 +60,8 @@ if (( $? && $+commands[virtualenvwrapper.sh] )); then
     source "$commands[virtualenvwrapper.sh]"
   fi
 fi
+
+##
+# Aliases
+#
+source ${0:h}/aliases.zsh

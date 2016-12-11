@@ -28,3 +28,8 @@ executable dirlog
 
 # Source module files.
 zplug "tymm/zsh-directory-history", use:directory-history.plugin.zsh
+
+##
+# Key Bindings
+#
+source ${0:h}/bindings.zsh

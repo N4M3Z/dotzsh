@@ -43,3 +43,8 @@ then
         install-trash
     fi
 fi
+
+##
+# Aliases
+#
+source ${0:h}/aliases.zsh

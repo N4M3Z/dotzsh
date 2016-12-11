@@ -121,3 +121,13 @@ fi
 
 # Beep on error in line editor.
 setopt BEEP
+
+##
+# Functions
+#
+source ${0:h}/functions.zsh
+
+##
+# Key Bindings
+#
+source ${0:h}/bindings.zsh

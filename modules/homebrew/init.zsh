@@ -9,3 +9,8 @@
 if [[ "$OSTYPE" != (darwin|linux)* ]]; then
   return 1
 fi
+
+##
+# Aliases
+#
+source ${0:h}/aliases.zsh

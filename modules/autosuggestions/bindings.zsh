@@ -6,8 +6,14 @@
 #     Defines key bindings for zsh-autosuggestions.
 #
 #  @author
-#     Martin Zeman <martin.zeman@protonmail.ch>
+#     Martin Zeman <martin.zeman@protonmail.com>
 #
 
-# [ctrl+t] : Toggle autosuggestions
-bindkey '\C-t' autosuggest-toggle # [ctrl + t] replaces transpose-chars
+if [[ -n "$key_info" ]]; then
+    # vi
+    bindkey -M viins "$key_info[Control]F" vi-forward-word
+    bindkey -M viins "$key_info[Control]E" vi-add-eol
+
+    # [ctrl+t] : Toggle autosuggestions
+    bindkey '\C-t' autosuggest-toggle
+fi

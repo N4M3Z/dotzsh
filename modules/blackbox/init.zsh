@@ -9,4 +9,5 @@
 #
 
 # Source module files.
-zplug "StackExchange/blackbox", as:plugin
+zplug "StackExchange/blackbox", \
+    as:plugin

@@ -52,7 +52,7 @@ function pfuncload()
   # Extended globbing is needed for listing autoloadable function directories.
   setopt LOCAL_OPTIONS EXTENDED_GLOB
   # Load Prezto functions.
-  for pfunction in $1/$~pfunction_glob; do
+  for pfunction in $1/${~pfunction_glob}; do
     autoload -Uz "$pfunction"
   done
 }
@@ -96,21 +96,7 @@ function pmodload()
         zstyle ":prezto:module:$pmodule" loaded 'yes'
       else
         # Remove the $fpath entry.
-        fpath[(r)${ZSH}/modules/${pmodule}/functions]=()
-
-        function {
-          local pfunction
-
-          # Extended globbing is needed for listing autoloadable function
-          # directories.
-          setopt LOCAL_OPTIONS EXTENDED_GLOB
-
-          # Unload Prezto functions.
-          for pfunction in ${ZSH}/modules/$pmodule/functions/$~pfunction_glob; do
-            unfunction "$pfunction"
-          done
-        }
-
+        pfuncunset ${pmodule}
         zstyle ":prezto:module:$pmodule" loaded 'no'
       fi
     fi
@@ -119,6 +105,24 @@ function pmodload()
     # echo "$pmodule: ${SECONDS}s elapsed"
 
   done
+}
+
+function pfuncunset()
+{
+    local pmodule=("$argv[@]")
+    local pfunction
+
+    # Extended globbing is needed for listing autoloadable function directories.
+    setopt LOCAL_OPTIONS EXTENDED_GLOB
+
+    fpath[(r)${ZSH}/modules/${pmodule}/functions]=()
+
+    # Unload Prezto functions.
+    for pfunction in ${ZSH}/modules/$pmodule/functions/${~pfunction_glob}; do
+        if [[ -s "$pfunction" ]]; then
+            unfunction "$pfunction"
+        fi
+    done
 }
 
 #

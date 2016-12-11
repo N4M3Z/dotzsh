@@ -45,3 +45,13 @@ function fasd_cd {
     print "$fasd_ret"
   fi
 }
+
+##
+# Aliases
+#
+source ${0:h}/aliases.zsh
+
+##
+# Key Bindings
+#
+source ${0:h}/bindings.zsh

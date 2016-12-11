@@ -30,4 +30,7 @@ if ! zstyle -t ':prezto:module:history-substring-search' color; then
     unset HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_{FOUND,NOT_FOUND}
 fi
 
+##
+# Key Bindings
+#
 source ${0:h}/bindings.zsh

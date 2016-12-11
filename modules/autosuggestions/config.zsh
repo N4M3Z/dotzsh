@@ -26,18 +26,12 @@ if ! zstyle -t ':prezto:module:autosuggestions' color; then
   ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=''
 fi
 
-#
+##
 # Key Bindings
 #
-
-if [[ -n "$key_info" ]]; then
-  # vi
-  bindkey -M viins "$key_info[Control]F" vi-forward-word
-  bindkey -M viins "$key_info[Control]E" vi-add-eol
-fi
+source ${0:h}/bindings.zsh
 
 # Legacy loading:
-#
 # if is-defined 'autosuggest-start'
 # then
 #     zle-line-init()

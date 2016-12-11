@@ -56,3 +56,8 @@ if [[ -z "${ROOTSYS}" && ${ROOT_AUTOMATIC_SETUP} == "true" ]]
 then
     root-setup
 fi
+
+##
+# Aliases
+#
+source ${0:h}/aliases.zsh

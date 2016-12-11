@@ -10,4 +10,5 @@
 #
 
 ## Source module files.
-zplug "erichs/composure", use:composure.sh
+zplug "erichs/composure", \
+    use:composure.sh

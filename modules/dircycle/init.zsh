@@ -30,3 +30,8 @@ insert-cycledright ()
 	builtin pushd -q -0 &>/dev/null || true
 	zle reset-prompt
 }
+
+##
+# Key Bindings
+#
+source ${0:h}/bindings.zsh
