@@ -41,8 +41,8 @@ echo "Installing zsh-core ..."
 CURRENT_DIR="$(cd "$(dirname "${0}")" && pwd -P)"
 
 # Create necessary symbolic links for prezto
-rm "${ZDOTDIR:-$HOME}/.zprezto"
-ln -s "$CURRENT_DIR" "${ZDOTDIR:-$HOME}/.zprezto"
+rm "${ZDOTDIR:-$HOME}/.zsh"
+ln -s "$CURRENT_DIR" "${ZDOTDIR:-$HOME}/.zsh"
 
 setopt EXTENDED_GLOB
 # Link everything except README.md

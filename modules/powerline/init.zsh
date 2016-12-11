@@ -17,7 +17,7 @@ then
     powerline-daemon -q
 
     ## Source module files.
-    source "${0:h}/external/powerline/bindings/zsh/powerline.zsh"
+    zplug "powerline/powerline", use:powerline.zsh
 else
     echo "Powerline not found on your system, please install it, e.g.:"
     echo "> pip install powerline-status"

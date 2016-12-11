@@ -55,10 +55,10 @@ function pfuncload()
 }
 
 # Add functions to $fpath.
-fpath=(${pmodules:+${ZDOTDIR:-$HOME}/.zprezto/functions(/FN)} $fpath)
+fpath=(${pmodules:+${ZDOTDIR:-$HOME}/.zsh/functions(/FN)} $fpath)
 
 # Autoload functions.
-pfuncload ${ZDOTDIR:-$HOME}/.zprezto/functions/
+pfuncload ${ZDOTDIR:-$HOME}/.zsh/functions/
 
 ##
 # Module Loader
@@ -73,36 +73,36 @@ function pmodload()
   pmodules=("$argv[@]")
 
   # Add functions to $fpath.
-  fpath=(${pmodules:+${ZDOTDIR:-$HOME}/.zprezto/modules/${^pmodules}/functions(/FN)} $fpath)
+  fpath=(${pmodules:+${ZDOTDIR:-$HOME}/.zsh/modules/${^pmodules}/functions(/FN)} $fpath)
 
   # Autoload functions.
-  pfuncload ${ZDOTDIR:-$HOME}/.zprezto/modules/${^pmodules}/functions/
+  pfuncload ${ZDOTDIR:-$HOME}/.zsh/modules/${^pmodules}/functions/
 
   # Load Prezto modules.
   for pmodule in "$pmodules[@]"; do
     if zstyle -t ":prezto:module:$pmodule" loaded 'yes' 'no'; then
       continue
-    elif [[ ! -d "${ZDOTDIR:-$HOME}/.zprezto/modules/$pmodule" ]]; then
+    elif [[ ! -d "${ZDOTDIR:-$HOME}/.zsh/modules/$pmodule" ]]; then
       print "$0: no such module: $pmodule" >&2
       continue
     else
       # Load module initialization script
-      pfileload "${ZDOTDIR:-$HOME}/.zprezto/modules/$pmodule/init.zsh"
+      pfileload "${ZDOTDIR:-$HOME}/.zsh/modules/$pmodule/init.zsh"
 
       # Load module functions
-      pfileload "${ZDOTDIR:-$HOME}/.zprezto/modules/$pmodule/functions.zsh"
+      pfileload "${ZDOTDIR:-$HOME}/.zsh/modules/$pmodule/functions.zsh"
 
       # Load module aliases
-      pfileload "${ZDOTDIR:-$HOME}/.zprezto/modules/$pmodule/aliases.zsh"
+      pfileload "${ZDOTDIR:-$HOME}/.zsh/modules/$pmodule/aliases.zsh"
 
       # Load module key bindings
-      pfileload "${ZDOTDIR:-$HOME}/.zprezto/modules/$pmodule/bindings.zsh"
+      pfileload "${ZDOTDIR:-$HOME}/.zsh/modules/$pmodule/bindings.zsh"
 
       if (( $? == 0 )); then
         zstyle ":prezto:module:$pmodule" loaded 'yes'
       else
         # Remove the $fpath entry.
-        fpath[(r)${ZDOTDIR:-$HOME}/.zprezto/modules/${pmodule}/functions]=()
+        fpath[(r)${ZDOTDIR:-$HOME}/.zsh/modules/${pmodule}/functions]=()
 
         function {
           local pfunction
@@ -112,7 +112,7 @@ function pmodload()
           setopt LOCAL_OPTIONS EXTENDED_GLOB
 
           # Unload Prezto functions.
-          for pfunction in ${ZDOTDIR:-$HOME}/.zprezto/modules/$pmodule/functions/$~pfunction_glob; do
+          for pfunction in ${ZDOTDIR:-$HOME}/.zsh/modules/$pmodule/functions/$~pfunction_glob; do
             unfunction "$pfunction"
           done
         }
@@ -132,8 +132,8 @@ function pmodload()
 #
 
 # Source the Prezto configuration file.
-if [[ -s "${ZDOTDIR:-$HOME}/.zpreztorc" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zpreztorc"
+if [[ -s "${ZDOTDIR:-$HOME}/.zconfig" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zconfig"
 fi
 
 # Disable color and theme in dumb terminals.

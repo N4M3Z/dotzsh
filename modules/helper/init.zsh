@@ -9,7 +9,7 @@
 # Update core and all submodules
 function zsh-update()
 {
-    cd "${ZDOTDIR:-$HOME}/.zpreztorc"
+    cd "${ZDOTDIR:-$HOME}/.zconfig"
     git pull
     git submodule update --init --recursive
 }

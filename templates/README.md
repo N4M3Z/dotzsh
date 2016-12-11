@@ -24,7 +24,7 @@ The configuration files are read in the following order:
   04. ~/.zprofile
   05. /etc/zshrc
   06. ~/.zshrc
-  07. ~/.zpreztorc
+  07. ~/.zconfig
   08. /etc/zlogin
   09. ~/.zlogin
   10. ~/.zlogout
@@ -48,7 +48,7 @@ zprofile and zlogin are not meant to be used concurrently but can be done so.
 This file is sourced by interactive shells. It should define aliases,
 functions, shell options, and key bindings.
 
-### zpreztorc
+### zconfig
 
 This file configures Prezto.
 

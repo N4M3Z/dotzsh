@@ -10,4 +10,4 @@
 #
 
 # Source module files.
-source "${0:h}/external/url/url-highlighter.zsh" || return 1
+zplug "ascii-soup/zsh-url-highlighter", use:url/url-highlighter.zsh
