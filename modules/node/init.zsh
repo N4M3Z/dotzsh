@@ -21,11 +21,25 @@ fi
 
 # Load NPM completion.
 if (( $+commands[npm] )); then
-  cache_file="${0:h}/cache.zsh"
+  cache_file="${0:h}/_npm"
 
   if [[ "$commands[npm]" -nt "$cache_file" || ! -s "$cache_file" ]]; then
     # npm is slow; cache its output.
     npm completion >! "$cache_file" 2> /dev/null
+  fi
+
+  source "$cache_file"
+
+  unset cache_file
+fi
+
+# Load PM2 completion.
+if (( $+commands[pm2] )); then
+  cache_file="${0:h}/_pm2"
+
+  if [[ "$commands[pm2]" -nt "$cache_file" || ! -s "$cache_file" ]]; then
+    # pm2 is slow; cache its output.
+    pm2 completion >! "$cache_file" 2> /dev/null
   fi
 
   source "$cache_file"

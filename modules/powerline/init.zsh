@@ -22,3 +22,9 @@ else
     echo "Powerline not found on your system, please install it, e.g.:"
     echo "> pip install powerline-status"
 fi
+
+# if [[ -d "/usr/local/lib/zpython" ]]
+# then
+#     module_path=($module_path /usr/local/lib/zpython)
+#     zmodload -u zpython
+# fi
