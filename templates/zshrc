@@ -4,38 +4,10 @@
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
-export ZPLUG_HOME=/usr/local/opt/zplug
-
-# Source Prezto.
-if [[ -s "${ZPLUG_HOME}/init.zsh" ]]; then
-    source $ZPLUG_HOME/init.zsh
-
-    # zplug "~/.zsh", from:local, of:init.zsh
-    # zplug "~/.private", from:local
-
-    # Source Zsh framework.
-    if [[ -s "${ZDOTDIR:-$HOME}/.zsh/init.zsh" ]]
-    then
-        source "${ZDOTDIR:-$HOME}/.zsh/init.zsh"
-    fi
-
-    # Private tokens
-    if [[ -s "${ZDOTDIR:-$HOME}/.private" ]]
-    then
-        source "${ZDOTDIR:-$HOME}/.private"
-    fi
-
-    # Install plugins if there are plugins that have not been installed
-    if ! zplug check --verbose; then
-        printf "Install? [y/N]: "
-        if read -q; then
-            echo; zplug install
-        fi
-    fi
-
-    # Then, source plugins and add commands to $PATH
-    zplug load --verbose
-
+# Source Zsh framework.
+if [[ -s "${ZDOTDIR:-$HOME}/.zsh/init.zsh" ]]
+then
+    source "${ZDOTDIR:-$HOME}/.zsh/init.zsh"
 fi
 
 # Customize to your needs...

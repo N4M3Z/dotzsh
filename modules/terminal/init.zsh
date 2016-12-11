@@ -10,6 +10,16 @@ if [[ "$TERM" == (dumb|linux|*bsd*|eterm*) ]]; then
   return 1
 fi
 
+if ([[ "$TERM_PROGRAM" = 'iTerm.app' ]] && \
+    zstyle -t ':prezto:module:tmux:iterm' integrate \
+); then
+    if [[ -s $file ]]
+    then
+        source ~/.iterm2_shell_integration.`basename $SHELL`
+    fi
+fi
+
+
 # Sets the terminal or terminal multiplexer window title.
 function set-window-title {
   local title_format{,ted}

@@ -9,6 +9,9 @@
 # Measure elapsed time
 typeset -F SECONDS
 
+# Define framework location
+ZSH="${ZDOTDIR:-${HOME}}/.zsh"
+
 # Debug
 # set -x
 
@@ -55,10 +58,10 @@ function pfuncload()
 }
 
 # Add functions to $fpath.
-fpath=(${pmodules:+${ZDOTDIR:-$HOME}/.zsh/functions(/FN)} $fpath)
+fpath=(${pmodules:+${ZSH}/functions(/FN)} $fpath)
 
 # Autoload functions.
-pfuncload ${ZDOTDIR:-$HOME}/.zsh/functions/
+pfuncload ${ZSH}/functions/
 
 ##
 # Module Loader
@@ -73,36 +76,27 @@ function pmodload()
   pmodules=("$argv[@]")
 
   # Add functions to $fpath.
-  fpath=(${pmodules:+${ZDOTDIR:-$HOME}/.zsh/modules/${^pmodules}/functions(/FN)} $fpath)
+  fpath=(${pmodules:+${ZSH}/modules/${^pmodules}/functions(/FN)} $fpath)
 
   # Autoload functions.
-  pfuncload ${ZDOTDIR:-$HOME}/.zsh/modules/${^pmodules}/functions/
+  pfuncload ${ZSH}/modules/${^pmodules}/functions/
 
   # Load Prezto modules.
   for pmodule in "$pmodules[@]"; do
     if zstyle -t ":prezto:module:$pmodule" loaded 'yes' 'no'; then
       continue
-    elif [[ ! -d "${ZDOTDIR:-$HOME}/.zsh/modules/$pmodule" ]]; then
+    elif [[ ! -d "${ZSH}/modules/$pmodule" ]]; then
       print "$0: no such module: $pmodule" >&2
       continue
     else
       # Load module initialization script
-      pfileload "${ZDOTDIR:-$HOME}/.zsh/modules/$pmodule/init.zsh"
-
-      # Load module functions
-      pfileload "${ZDOTDIR:-$HOME}/.zsh/modules/$pmodule/functions.zsh"
-
-      # Load module aliases
-      pfileload "${ZDOTDIR:-$HOME}/.zsh/modules/$pmodule/aliases.zsh"
-
-      # Load module key bindings
-      pfileload "${ZDOTDIR:-$HOME}/.zsh/modules/$pmodule/bindings.zsh"
+      pfileload "${ZSH}/modules/$pmodule/init.zsh"
 
       if (( $? == 0 )); then
         zstyle ":prezto:module:$pmodule" loaded 'yes'
       else
         # Remove the $fpath entry.
-        fpath[(r)${ZDOTDIR:-$HOME}/.zsh/modules/${pmodule}/functions]=()
+        fpath[(r)${ZSH}/modules/${pmodule}/functions]=()
 
         function {
           local pfunction
@@ -112,7 +106,7 @@ function pmodload()
           setopt LOCAL_OPTIONS EXTENDED_GLOB
 
           # Unload Prezto functions.
-          for pfunction in ${ZDOTDIR:-$HOME}/.zsh/modules/$pmodule/functions/$~pfunction_glob; do
+          for pfunction in ${ZSH}/modules/$pmodule/functions/$~pfunction_glob; do
             unfunction "$pfunction"
           done
         }
@@ -132,30 +126,50 @@ function pmodload()
 #
 
 # Source the Prezto configuration file.
-if [[ -s "${ZDOTDIR:-$HOME}/.zconfig" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zconfig"
+export ZPLUG_HOME=/usr/local/opt/ZPLUG
+
+if [[ -s "${ZPLUG_HOME}/init.zsh" ]]; then
+    source $ZPLUG_HOME/init.zsh
+
+    if [[ -s "${ZDOTDIR:-$HOME}/.zconfig" ]]; then
+      source "${ZDOTDIR:-$HOME}/.zconfig"
+    fi
+
+    # Disable color and theme in dumb terminals.
+    if [[ "$TERM" == 'dumb' ]]; then
+      zstyle ':prezto:*:*' color 'no'
+      zstyle ':prezto:module:prompt' theme 'off'
+    fi
+
+    # Load Zsh modules.
+    zstyle -a ':prezto:load' zmodule 'zmodules'
+    for zmodule ("$zmodules[@]") zmodload "zsh/${(z)zmodule}"
+    unset zmodule{s,}
+
+    # Autoload Zsh functions.
+    zstyle -a ':prezto:load' zfunction 'zfunctions'
+    for zfunction ("$zfunctions[@]") autoload -Uz "$zfunction"
+    unset zfunction{s,}
+
+    # Load Prezto modules.
+    zstyle -a ':prezto:load' pmodule 'pmodules'
+    pmodload "$pmodules[@]"
+    unset pmodules
+
+    # Install plugins if there are plugins that have not been installed
+    if ! zplug check --verbose; then
+        printf "Install? [y/N]: "
+        if read -q; then
+            echo; zplug install
+        fi
+    fi
+
+    # Then, source plugins and add commands to $PATH
+    # zplug load
+    zplug load --verbose
+
+    # Print elapsed time
+    echo "${SECONDS}s elapsed"
+else
+    print "Requires zplug, please install it first."
 fi
-
-# Disable color and theme in dumb terminals.
-if [[ "$TERM" == 'dumb' ]]; then
-  zstyle ':prezto:*:*' color 'no'
-  zstyle ':prezto:module:prompt' theme 'off'
-fi
-
-# Load Zsh modules.
-zstyle -a ':prezto:load' zmodule 'zmodules'
-for zmodule ("$zmodules[@]") zmodload "zsh/${(z)zmodule}"
-unset zmodule{s,}
-
-# Autoload Zsh functions.
-zstyle -a ':prezto:load' zfunction 'zfunctions'
-for zfunction ("$zfunctions[@]") autoload -Uz "$zfunction"
-unset zfunction{s,}
-
-# Load Prezto modules.
-zstyle -a ':prezto:load' pmodule 'pmodules'
-pmodload "$pmodules[@]"
-unset pmodules
-
-# Print elapsed time
-echo "${SECONDS}s elapsed"

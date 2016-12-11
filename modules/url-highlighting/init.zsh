@@ -10,4 +10,7 @@
 #
 
 # Source module files.
-zplug "ascii-soup/zsh-url-highlighter", use:url/url-highlighter.zsh
+zplug "ascii-soup/zsh-url-highlighter", \
+    use:url/url-highlighter.zsh, \
+    on:"zsh-users/zsh-syntax-highlighting", \
+    defer:2
