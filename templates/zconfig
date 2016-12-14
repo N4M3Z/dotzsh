@@ -65,6 +65,7 @@ zplugins=(
             "pip"
             "pygmentize"
             "ruby"
+            "golang"
             "root"
             "tmux"
             "wordchar"
@@ -193,6 +194,14 @@ zstyle ':prezto:module:python:info:virtualenv' format 'virtualenv:%v'
 
 # Auto switch the Ruby version on directory change.
 # zstyle ':prezto:module:ruby:chruby' auto-switch 'yes'
+
+#
+# Go
+#
+goroot="${ZDOTDIR:-$HOME}/Developer/golang"
+gopath="$goroot/vendor"
+zstyle ':prezto:module:golang' goroot $goroot
+# zstyle ':prezto:module:golang' gopath $gopath
 
 #
 # Screen
