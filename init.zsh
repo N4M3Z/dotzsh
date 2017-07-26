@@ -1,5 +1,5 @@
 #
-# Initializes Prezto.
+# Initializes Dotzsh.
 #
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
