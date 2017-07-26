@@ -4,10 +4,10 @@
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
-
-# Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+# Source Zsh framework.
+if [[ -s "${ZDOTDIR:-$HOME}/.zsh/init.zsh" ]]
+then
+    source "${ZDOTDIR:-$HOME}/.zsh/init.zsh"
 fi
 
 # Customize to your needs...
