@@ -33,16 +33,16 @@ If colors are enabled, *autosuggestions* will automatically highlight
 positive results.
 
 To enable highlighting for this module only, add the following line to
-*zpreztorc*:
+*zconfig*:
 
-```sh
-zstyle ':prezto:module:autosuggestions' color 'yes'
+```shell
+zstyle ':dotzsh:module:autosuggestions' color 'yes'
 ```
 
-To set the query found color, add the following line to *zpreztorc*:
+To set the query found color, add the following line to *zconfig*:
 
-```sh
-zstyle ':prezto:module:autosuggestions:color' found ''
+```shell
+zstyle ':dotzsh:module:autosuggestions:color' found ''
 ```
 
 Authors
@@ -54,4 +54,4 @@ Authors
 
 [1]: https://github.com/tarruda/zsh-autosuggestions
 [2]: http://fishshell.com
-[3]: https://github.com/sorin-ionescu/prezto/issues
+[3]: https://github.com/N4M3Z/dotzsh/issues
