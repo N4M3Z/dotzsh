@@ -11,7 +11,4 @@ if (( ! $+commands[git] )); then
 fi
 
 # Load dependencies.
-pmodload 'helper'
-
-# Source module files.
-source "${0:h}/alias.zsh"
+dotzsh-module-load 'helper'
