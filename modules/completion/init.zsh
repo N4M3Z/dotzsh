@@ -45,6 +45,12 @@ else
 fi
 unset _comp_files
 
+# Turn off beeping for ambiguous completions
+if zstyle -t ':dotzsh:module:completion' no-list-beep
+then
+    setopt NO_LIST_BEEP
+fi
+
 #
 # Styles
 #
