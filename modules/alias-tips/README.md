@@ -1,7 +1,7 @@
 Alias tips
 ==========
 
-[Alias-tips][1] is a plugin to help remembering aliases you once defined. It works by trying to find an alias for the command you are currently trying to execute and printing a help line reminding you about that alias.
+[Alias-tips][2] is a plugin to help remembering aliases you once defined. It works by trying to find an alias for the command you are currently trying to execute and printing a help line reminding you about that alias.
 
 Options
 -------
@@ -11,9 +11,9 @@ Options
 Authors
 -------
 
-*The authors of this module should be contacted via the [issue tracker][2].*
+*The authors of this module should be contacted via the [issue tracker][1].*
 
   - [Martin Zeman](https://github.com/N4M3Z)
 
-[1]: https://github.com/djui/alias-tips
-[2]: https://github.com/N4M3Z/dotzsh/issues
+[1]: https://github.com/N4M3Z/dotzsh/issues
+[2]: https://github.com/djui/alias-tips
