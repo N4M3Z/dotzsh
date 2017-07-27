@@ -1,11 +1,10 @@
+##
+# @brief
+#     Lists the contents of archives.
 #
-# Lists the contents of archives.
+# @author
+#     Sorin Ionescu <sorin.ionescu@gmail.com>
 #
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
-
-# function lsarchive {
 
 local verbose
 
@@ -55,5 +54,3 @@ while (( $# > 0 )); do
 
   shift
 done
-
-# }

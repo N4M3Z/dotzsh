@@ -1,11 +1,9 @@
-#
+##
 # Extracts the contents of archives.
 #
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
+# @author
+#     Sorin Ionescu <sorin.ionescu@gmail.com>
 #
-
-# function unarchive {
 
 local remove_archive
 local success
@@ -80,5 +78,3 @@ while (( $# > 0 )); do
   (( $success == 0 )) && (( $remove_archive == 0 )) && rm "$1"
   shift
 done
-
-# }

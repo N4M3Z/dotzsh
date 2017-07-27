@@ -1,12 +1,12 @@
 #!/usr/bin/env zsh
-#
-# Creates archive file
-#
-# Authors:
-#   Matt Hamilton <m@tthamilton.com>
-#
 
-# function archive {
+##
+# @brief
+#     Creates archive file
+#
+# @author
+#     Matt Hamilton <m@tthamilton.com>
+#
 
 local archive_name dir_to_archive _gzip_bin _bzip2_bin
 
@@ -23,12 +23,13 @@ EOF
 return 1
 fi
 
-# we are quitting (above) if there are not exactly 2 vars,
+##
+# We are quitting (above) if there are not exactly 2 vars,
 #  so we don't need any argc check here.
 
-# strip the path, just in case one is provided for some reason
+# Strip the path, just in case one is provided for some reason
 archive_name="${1:t}"
-# use absolute paths, and follow symlinks
+# Use absolute paths, and follow symlinks
 dir_to_archive="${2}"
 
 # if the directory doesn't exist, quit. Nothing to archive
@@ -37,9 +38,9 @@ if [[ ! -e "${dir_to_archive}" ]]; then
   return 1
 fi
 
-# here, we check for dropin/multi-threaded replacements
-# this should eventually be moved to modules/archive/init.zsh
-# as a global alias
+##
+# Here, we check for dropin/multi-threaded replacements
+# this should eventually be moved to modules/archive/init.zsh as a global alias
 if (( $+commands[pigz] )); then
   _gzip_bin='pigz'
 else
@@ -67,5 +68,3 @@ case "${archive_name}" in
   (*.lzma) print "\n.lzma is only useful for single files, and does not capture permissions. Use .tar.lzma" ;;
   (*) print "\nunknown archive type for archive: ${archive_name}" ;;
 esac
-
-# }
