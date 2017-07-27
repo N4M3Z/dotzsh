@@ -1,13 +1,14 @@
-#
+##
 # Executes commands at the start of an interactive session.
 #
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
+# @author
+#     Sorin Ionescu <sorin.ionescu@gmail.com>
 #
+
 # Source Zsh framework.
-if [[ -s "${ZDOTDIR:-$HOME}/.zsh/init.zsh" ]]
+if [[ -s "${ZDOTDIR:-$HOME}/.zsh/load.zsh" ]]
 then
-    source "${ZDOTDIR:-$HOME}/.zsh/init.zsh"
+    source "${ZDOTDIR:-$HOME}/.zsh/load.zsh"
 fi
 
 # Customize to your needs...
