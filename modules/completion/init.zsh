@@ -1,9 +1,14 @@
+##
+# @file
+#     completion/init.zsh
 #
-# Sets completion options.
+# @brief
+#     Sets completion options.
 #
-# Authors:
-#   Robby Russell <robby@planetargon.com>
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
+# @author
+#     Robby Russell <robby@planetargon.com>
+#     Sorin Ionescu <sorin.ionescu@gmail.com>
+#     Martin Zeman <martin.zeman@protonmail.com>
 #
 
 # Return if requirements are not found.
