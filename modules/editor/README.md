@@ -8,28 +8,28 @@ Settings
 
 ### Key bindings
 
-To enable key bindings, add the following to *zpreztorc*, and replace 'bindings'
+To enable key bindings, add the following to *zconfig*, and replace 'bindings'
 with 'emacs' or 'vi'.
 
-```sh
-zstyle ':prezto:module:editor' key-bindings 'bindings'
+```shell
+zstyle ':dotzsh:module:editor' key-bindings 'bindings'
 ```
 
 ### Dot Expansion
 
 To enable the auto conversion of .... to ../.., add the following to
-*zpreztorc*.
+*zconfig*.
 
-```sh
-zstyle ':prezto:module:editor' dot-expansion 'yes'
+```shell
+zstyle ':dotzsh:module:editor' dot-expansion 'yes'
 ```
 
 ### PS Context
 
 To enable the prompt context to be set, add the following to your
-*zpreztorc*.
+*zconfig*.
 
-```sh
+```shell
 zstyle ':prezto:module:editor' ps-context 'yes'
 ```
 
@@ -39,36 +39,36 @@ Theming
 To indicate when the editor is in the primary keymap (emacs or viins), add
 the following to your `theme_prompt_setup` function.
 
-```sh
-zstyle ':prezto:module:editor:info:keymap:primary' format '>>>'
+```shell
+zstyle ':dotzsh:module:editor:info:keymap:primary' format '>>>'
 ```
 
 To indicate when the editor is in the primary keymap (emacs or viins) insert
 mode, add the following to your `theme_prompt_setup` function.
 
-```sh
-zstyle ':prezto:module:editor:info:keymap:primary:insert' format 'I'
+```shell
+zstyle ':dotzsh:module:editor:info:keymap:primary:insert' format 'I'
 ```
 
 To indicate when the editor is in the primary keymap (emacs or viins) overwrite
 mode, add the following to your `theme_prompt_setup` function.
 
-```sh
-zstyle ':prezto:module:editor:info:keymap:primary:overwrite' format 'O'
+```shell
+zstyle ':dotzsh:module:editor:info:keymap:primary:overwrite' format 'O'
 ```
 
 To indicate when the editor is in the alternate keymap (vicmd), add the
 following to your `theme_prompt_setup` function.
 
-```sh
-zstyle ':prezto:module:editor:info:keymap:alternate' format '<<<'
+```shell
+zstyle ':dotzsh:module:editor:info:keymap:alternate' format '<<<'
 ```
 
 To indicate when the editor is completing, add the following to your
 `theme_prompt_setup` function.
 
-```sh
-zstyle ':prezto:module:editor:info:completing' format '...'
+```shell
+zstyle ':dotzsh:module:editor:info:completing' format '...'
 ```
 
 Then add `$editor_info[context]`, where context is *keymap*, *insert*, or
@@ -96,4 +96,4 @@ Authors
 
   - [Sorin Ionescu](https://github.com/sorin-ionescu)
 
-[1]: https://github.com/sorin-ionescu/oh-my-zsh/issues
+[1]: https://github.com/N4M3Z/dotzsh/issues
