@@ -1,13 +1,14 @@
-#
+##
 # Maintains a frequently used file and directory list for fast access.
 #
 # Authors:
 #   Wei Dai <x@wei23.net>
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   Martin Zeman <martin.zeman@protonmail.ch>
 #
 
 # Load dependencies.
-pmodload 'editor'
+dotzsh-module-load 'editor'
 
 # If the command doesn't exist externally, we need to fall back to the bundled
 # submodule.
@@ -15,7 +16,7 @@ if (( ! $+commands[fasd] )); then
   source "${0:h}/external/fasd" || return 1
 fi
 
-#
+##
 # Initialization
 #
 
@@ -25,7 +26,7 @@ if [[ "${commands[fasd]}" -nt "$cache_file" || ! -s "$cache_file"  ]]; then
   init_args=(zsh-hook)
 
   # Set fasd completion init arguments, if applicable.
-  if zstyle -t ':prezto:module:completion' loaded; then
+  if zstyle -t ':dotzsh:module:completion' loaded; then
     init_args+=(zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install)
   fi
 
@@ -45,10 +46,3 @@ function fasd_cd {
     print "$fasd_ret"
   fi
 }
-
-#
-# Aliases
-#
-
-# Changes the current working directory interactively.
-alias j='fasd_cd -i'
