@@ -16,7 +16,7 @@ where context is *brief*, *oneline*, and *medium*, which will be passed to the
 `--pretty=format:` switch.
 
 ```sh
-zstyle ':prezto:module:git:log:context' format ''
+zstyle ':dotzsh:module:git:log:context' format ''
 ```
 
 ### Status
@@ -25,7 +25,7 @@ Retrieving the status of a repository with submodules can take a long time.
 Submodules may be ignored when they are *dirty*, *untracked*, *all*, or *none*.
 
 ```sh
-zstyle ':prezto:module:git:status:ignore' submodules 'all'
+zstyle ':dotzsh:module:git:status:ignore' submodules 'all'
 ```
 
 This setting affects all aliases and functions that call `git-status`.
@@ -36,7 +36,7 @@ Aliases
 Aliases are enabled by default. You can disable them with:
 
 ```sh
-zstyle ':prezto:module:git:alias' skip 'yes'
+zstyle ':dotzsh:module:git:alias' skip 'yes'
 ```
 
 ### Git
@@ -342,7 +342,7 @@ following styles in the `prompt_name_setup` function, where the syntax for
 setting a style is as follows.
 
 ```sh
-zstyle ':prezto:module:git:info:context:subcontext' format 'string'
+zstyle ':dotzsh:module:git:info:context:subcontext' format 'string'
 ```
 
 ### Main Contexts
@@ -371,7 +371,7 @@ zstyle ':prezto:module:git:info:context:subcontext' format 'string'
 The following contexts must be enabled with the following zstyle:
 
 ```sh
-zstyle ':prezto:module:git:info' verbose 'yes'
+zstyle ':dotzsh:module:git:info' verbose 'yes'
 ```
 
 ### Verbose Contexts
@@ -406,14 +406,14 @@ First, format the repository state attributes. For example, to format the branch
 and remote names, define the following styles.
 
 ```sh
-zstyle ':prezto:module:git:info:branch' format 'branch:%b'
-zstyle ':prezto:module:git:info:remote' format 'remote:%R'
+zstyle ':dotzsh:module:git:info:branch' format 'branch:%b'
+zstyle ':dotzsh:module:git:info:remote' format 'remote:%R'
 ```
 
 Second, format how the above attributes are displayed in prompts.
 
 ```sh
-zstyle ':prezto:module:git:info:keys' format \
+zstyle ':dotzsh:module:git:info:keys' format \
   'prompt'  ' git(%b)' \
   'rprompt' '[%R]'
 ```
@@ -435,8 +435,8 @@ Authors
 [3]: https://www.github.com
 [4]: http://www.manpagez.com/man/8/gpt/
 [5]: http://linux.die.net/man/1/gs
-[6]: https://github.com/sorin-ionescu/prezto/issues
-[7]: https://github.com/sorin-ionescu/prezto/issues/219
+[6]: https://github.com/sorin-ionescu/dotzsh/issues
+[7]: https://github.com/sorin-ionescu/dotzsh/issues/219
 [8]: http://www.kernel.org/pub/software/scm/git/docs/git-log.html
 [9]: https://getgb.io/
 [10]: https://github.com/blog/985-git-io-github-url-shortener
