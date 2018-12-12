@@ -51,7 +51,6 @@ zplugins=(
   'archive'
   'alias-tips'
   'command-not-found'
-  # "blackbox"
   # "composure"
   # "dircycle"
   'enhancd'
