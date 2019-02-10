@@ -41,6 +41,13 @@ zstyle ':prezto:load' pmodule \
   'prompt'
 
 #
+# Alias tips
+#
+
+# Set default alias tip text
+# zstyle ":prezto:module:alias-tips" text "Alias tip: "
+
+#
 # Autosuggestions
 #
 
