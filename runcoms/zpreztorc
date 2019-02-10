@@ -76,6 +76,18 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 #zstyle ':prezto:module:editor' ps-context 'yes'
 
 #
+# Enhancd
+#
+# Specified list of one or more visual filters.
+zstyle ":prezto:module:enhancd" filter "fzy:fzf:peco"
+
+# Change the command name of enhancd
+zstyle ":prezto:module:enhancd" command "cd"
+
+# Set whether to show the full path or not when executing `..`
+zstyle ":prezto:module:enhancd" show-fullpath 1
+
+#
 # Git
 #
 
