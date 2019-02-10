@@ -1,0 +1,355 @@
+#!/bin/zsh
+
+#
+# Sets Prezto options.
+#
+# Authors:
+#   Martin Zeman <martin.zeman@pm.me>
+#
+
+##
+# General
+#
+
+# Set case-sensitivity for completion, history lookup, etc.
+# zstyle ':prezto:*:*' case-sensitive 'yes'
+
+# Color output (auto set to 'no' on dumb terminals).
+zstyle ':prezto:*:*' color 'yes'
+
+# Add additional directories to load prezto modules from
+# zstyle ':prezto:load' pmodule-dirs $HOME/.zsh/contrib
+
+# Setup aliases for modules (disable per module below).
+zstyle ':prezto:module:*' aliases 'yes'
+
+# Setup key bindings for modules (disable per module below).
+zstyle ':prezto:module:*' bindings 'yes'
+
+# Set the Zsh modules to load (man zshmodules).
+# zstyle ':prezto:load' zmodule 'attr' 'stat'
+
+# Set the Zsh functions to load (man zshcontrib).
+# zstyle ':prezto:load' zfunction 'zargs' 'zmv'
+
+# Set the Prezto modules to load (browse modules).
+# The order matters.
+
+# Create a modules variable
+zplugins=(
+  ## Default plugins
+  'environment' # Sets general shell options and defines environment variables. This module must be loaded first.
+  'terminal'
+  'editor'
+  'history'
+  'directory'
+  'spectrum'
+  'utility'     # Defines general aliases and functions.
+  'completion'  # Loads and configures tab completion and provides additional completions from the zsh-completions project.
+  ## Add plugins here
+  # "profiles"
+  'archive'
+  'alias-tips'
+  'command-not-found'
+  # "blackbox"
+  # "composure"
+  # "dircycle"
+  'enhancd'
+  'git'
+  'gpg'
+  # "node"
+  # "powerline"  # Preceeding the python module as powerline runs slowly through pyenv
+  # "python"
+  # "pip"
+  # "pygmentize"
+  # "ruby"
+  # "php"
+  # "golang"
+  'tmux'
+  # "wordchar"
+  'todo-txt'
+  ## Load last
+  'syntax-highlighting'
+  'history-substring-search'
+  'autosuggestions'
+  'contrib-prompt'
+  'prompt'
+)
+
+zstyle ':prezto:load' pmodule $zplugins
+
+#
+# Alias tips
+#
+
+# Set default alias tip text
+zstyle ":prezto:module:alias-tips" text "Alias tip: "
+
+#
+# Autosuggestions
+#
+
+# Set the query found color.
+# zstyle ':prezto:module:autosuggestions:color' found ''
+
+#
+# Completions
+#
+
+# Turn off beeping for ambiguous completions
+zstyle ':prezto:module:completion' no-list-beep 'yes'
+
+# Menu select
+zstyle ':prezto:module:completion' complist 'yes'
+
+# Completion waiting dots
+# zstyle ':prezto:module:completion' waiting-dots 'yes'
+
+# Set the entries to ignore in static */etc/hosts* for host completion.
+# zstyle ':prezto:module:completion:*:hosts' etc-host-ignores \
+#   '0.0.0.0' '127.0.0.1'
+
+#
+# Editor
+#
+
+# Set the key mapping style to 'emacs' or 'vi'.
+zstyle ':prezto:module:editor' key-bindings 'emacs'
+
+# Auto convert .... to ../..
+zstyle ':prezto:module:editor' dot-expansion 'yes'
+
+# Allow the zsh prompt context to be shown.
+# zstyle ':prezto:module:editor' ps-context 'yes'
+
+#
+# Environment
+#
+
+# You may need to manually set your language environment
+zstyle ':prezto:environment' language 'en_US.UTF-8'
+
+#
+# Enhancd
+#
+# Specified list of one or more visual filters.
+zstyle ":prezto:module:enhancd" filter "fzy:fzf:peco"
+
+# Change the command name of enhancd
+zstyle ":prezto:module:enhancd" command "cd"
+
+# Set whether to show the full path or not when executing `..`
+zstyle ":prezto:module:enhancd" show-fullpath 1
+
+#
+# Git
+#
+
+# Ignore submodules when they are 'dirty', 'untracked', 'all', or 'none'.
+# zstyle ':prezto:module:git:status:ignore' submodules 'all'
+
+#
+# GNU Utility
+#
+
+# Set the command prefix on non-GNU systems.
+# zstyle ':prezto:module:gnu-utility' prefix 'g'
+
+#
+# Go
+#
+zstyle ':prezto:module:golang' gopath ${ZDOTDIR:-$HOME}/Developer/golang
+
+#
+# History
+#
+zstyle ':prezto:module:history' format 'yyyy-mm-dd'
+
+#
+# History Substring Search
+#
+
+# Set the query found color.
+zstyle ':prezto:module:history-substring-search:color' found 'fg=green,bold,underline'
+
+# Set the query not found color.
+zstyle ':prezto:module:history-substring-search:color' not-found 'fg=red,bold,underline'
+
+# Set the search globbing flags.
+zstyle ':prezto:module:history-substring-search' globbing-flags 'i'
+
+#
+# Pacman
+#
+
+# Set the Pacman frontend.
+# zstyle ':prezto:module:pacman' frontend 'yaourt'
+
+#
+# Prompt
+#
+
+# Set the prompt theme to load.
+# Setting it to 'random' loads a random theme.
+# Auto set to 'off' on dumb terminals.
+# zstyle ':prezto:module:prompt' theme 'eriner'
+# zstyle ':prezto:module:prompt' theme 'agnoster'
+zstyle ':prezto:module:prompt' theme 'N4M3Z'
+
+# Set the working directory prompt display length.
+# By default, it is set to 'short'. Set it to 'long' (without '~' expansion)
+# for longer or 'full' (with '~' expansion) for even longer prompt display.
+zstyle ':prezto:module:prompt' pwd-length 'long'
+
+# Set the prompt to display the return code along with an indicator for non-zero
+# return codes. This is not supported by all prompts.
+zstyle ':prezto:module:prompt' show-return-val 'yes'
+
+#
+# Ruby
+#
+
+# Auto switch the Ruby version on directory change.
+# zstyle ':prezto:module:ruby:chruby' auto-switch 'yes'
+
+#
+# Python
+#
+
+# Auto switch the Python virtualenv on directory change.
+zstyle ':prezto:module:python:virtualenv' auto-switch 'yes'
+
+# Automatically initialize virtualenvwrapper if pre-requisites are met.
+zstyle ':prezto:module:python:virtualenv' initialize 'yes'
+
+#
+# Screen
+#
+
+# Auto start a session when Zsh is launched in a local terminal.
+# zstyle ':prezto:module:screen:auto-start' local 'yes'
+
+# Auto start a session when Zsh is launched in a SSH connection.
+# zstyle ':prezto:module:screen:auto-start' remote 'yes'
+
+#
+# SSH
+#
+
+# Set the SSH identities to load into the agent.
+# zstyle ':prezto:module:ssh:load' identities 'id_dsa'
+
+#
+# Syntax Highlighting
+#
+
+# Set syntax highlighters.
+# By default, only the main highlighter is enabled.
+zhighlighters=(
+  'main'
+  'brackets'
+  'pattern'
+  'cursor'
+  'root'
+  'line'
+  # 'url'
+)
+
+zstyle ":prezto:module:syntax-highlighting" highlighters $zhighlighters
+
+# Create a styles variable
+zstyles=(
+  # To differentiate aliases from other command types
+  "alias" "fg=blue,bold"
+
+  # To have paths colored instead of underlined
+  # "path" "fg=cyan"
+
+  # To disable highlighting of globbing expressions
+  #"globbing" "none"
+
+  ## Brackets highlighter, that highlights brackets, parenthesis and matches them:
+  # To define styles for nested brackets up to level 4
+  "bracket-level-1" "fg=blue,bold"
+  "bracket-level-2" "fg=red,bold"
+  "bracket-level-3" "fg=yellow,bold"
+  "bracket-level-4" "fg=magenta,bold"
+
+  ## Cursor highlighter, that highlights the cursor:
+  # "cursor" "bg=blue"
+
+  ## Root highlighter, that highlights the whole line if the current user is root:
+  "root" "bg=red"
+
+  ## Line highlighter, that highlights the whole line
+  # "line" "bold"
+)
+
+zstyle ':prezto:module:syntax-highlighting' styles $zstyles
+
+## Pattern highlighter, that highlights user defined patterns:
+zpatterns=(
+  "rm -rf *" "fg=white,bold,bg=red" \
+  "sudo *"   "fg=white,bold,bg=red" \
+)
+
+zstyle ":prezto:module:syntax-highlighting" patterns $zpatterns
+
+#
+# Terminal
+#
+
+# Auto set the tab and window titles.
+zstyle ':prezto:module:terminal' auto-title 'yes'
+
+# Set the window title format.
+# zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
+
+# Set the tab title format.
+# zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
+
+# Set the terminal multiplexer title format.
+# zstyle ':prezto:module:terminal:multiplexer-title' format '%s'
+
+#
+# Tmux
+#
+
+# Auto start a session when Zsh is launched in a local terminal.
+# zstyle ':prezto:module:tmux:auto-start' local 'yes'
+
+# Auto start a session when Zsh is launched in a SSH connection.
+# zstyle ':prezto:module:tmux:auto-start' remote 'yes'
+
+# Integrate with iTerm2.
+zstyle ':prezto:module:tmux:iterm' integrate 'yes'
+
+# Set the default session name:
+# zstyle ':prezto:module:tmux:session' name 'YOUR DEFAULT SESSION NAME'
+
+#
+# Utility
+#
+
+# Enabled safe options. This aliases cp, ln, mv and rm so that they prompt
+# before deleting or overwriting files. Set to 'no' to disable this safer
+# behavior.
+# zstyle ':prezto:module:utility' safe-ops 'yes'
+
+# zstyle ':prezto:module:utility:ls' color 'no'
+# zstyle ':prezto:module:utility:diff' color 'no'
+# zstyle ':prezto:module:utility:wdiff' color 'no'
+# zstyle ':prezto:module:utility:make' color 'no'
+# zstyle ':prezto:module:utility:grep' color 'no'
+zstyle ':prezto:module:utility:grep' color '1;32'
+
+#
+# Debug
+#
+zstyle ':prezto:load' timing 'yes'
+zstyle ':prezto:module:*' timing 'yes'
+
+export GPG_TTY=$(tty)
+echo "UPDATESTARTUPTTY" | gpg-connect-agent > /dev/null 2>&1
+unset SSH_AGENT_PID
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)

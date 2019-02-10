@@ -1,0 +1,10 @@
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Martin Zeman <martin.zeman@pm.me>
+#
+
+if [[ -s "${ZDOTDIR:-$HOME}/.zsh/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zsh/init.zsh"
+fi
