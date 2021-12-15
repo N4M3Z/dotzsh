@@ -13,6 +13,11 @@ if ! is-darwin && ! is-linux; then
   return 1
 fi
 
+# Add homebrew to $path on for M1 version of homebrew
+if [[ -d "/opt/homebrew" ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 #
 # Variables
 #
