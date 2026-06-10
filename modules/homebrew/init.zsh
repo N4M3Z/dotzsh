@@ -34,7 +34,9 @@ if (( $+commands[brew] )); then
   unset cache_file
 
   # Discoverable to the completion module (which runs compinit later in the load order).
-  [[ -d $HOMEBREW_PREFIX/share/zsh/site-functions ]] && fpath+=($HOMEBREW_PREFIX/share/zsh/site-functions)
+  brew_prefix=${HOMEBREW_PREFIX:-${HOMEBREW_REPOSITORY:-$commands[brew]:A:h:h}}
+  fpath+=($brew_prefix/share/zsh/site-functions(/N))
+  unset brew_prefix
 fi
 
 #
