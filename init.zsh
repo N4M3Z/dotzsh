@@ -191,6 +191,21 @@ zstyle -a ':prezto:load' zfunction 'zfunctions'
 for zfunction ("$zfunctions[@]") autoload -Uz "$zfunction"
 unset zfunction{s,}
 
+# Autoload Zsh functions from directories: each directory is prepended to
+# $fpath and every function file inside it is autoloaded by name. Drop a file
+# in the directory and it becomes a command next shell, no per-name listing.
+zstyle -a ':prezto:load' zfunction-dir 'zfunction_dirs'
+for zfunction_dir ("$zfunction_dirs[@]"); do
+  [[ -d $zfunction_dir ]] || continue
+  fpath=("$zfunction_dir" $fpath)
+  function {
+    setopt LOCAL_OPTIONS EXTENDED_GLOB
+    local zfunction
+    for zfunction ("$zfunction_dir"/^(_*|*~|README*|*.zwc)(-.N:t)) autoload -Uz "$zfunction"
+  }
+done
+unset zfunction_dir{s,}
+
 # Load Prezto modules.
 zstyle -a ':prezto:load' pmodule 'pmodules'
 pmodload "$pmodules[@]"
